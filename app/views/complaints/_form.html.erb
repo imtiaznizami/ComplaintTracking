@@ -1,0 +1,89 @@
+<%= nested_form_for(@complaint) do |f| %>
+  <% if @complaint.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@complaint.errors.count, "error") %> prohibited this complaint from being saved:</h2>
+
+      <ul>
+      <% @complaint.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :incident %><br />
+    <%= f.text_field :incident %>
+  </div>
+  <div class="field">
+    <%= f.label :problem_status %><br />
+    <%= f.text_field :problem_status %>
+  </div>
+  <div class="field">
+    <%= f.label :escalation_time %><br />
+    <%= f.datetime_select :escalation_time %>
+  </div>
+  <div class="field">
+    <%= f.label :msisdn %><br />
+    <%= f.text_field :msisdn %>
+  </div>
+  <div class="field">
+    <%= f.label :party_a %><br />
+    <%= f.text_field :party_a %>
+  </div>
+  <div class="field">
+    <%= f.label :alternate_number %><br />
+    <%= f.text_field :alternate_number %>
+  </div>
+  <div class="field">
+    <%= f.label :ne_name %><br />
+    <%= f.text_field :ne_name %>
+  </div>
+  <div class="field">
+    <%= f.label :cell_id %><br />
+    <%= f.text_field :cell_id %>
+  </div>
+  <div class="field">
+    <%= f.label :brief_description %><br />
+    <%= f.text_field :brief_description %>
+  </div>
+  <div class="field">
+    <%= f.label :revenue_band %><br />
+    <%= f.text_field :revenue_band %>
+  </div>
+  <div class="field">
+    <%= f.label :package_type %><br />
+    <%= f.text_field :package_type %>
+  </div>
+  <div class="field">
+    <%= f.label :duration %><br />
+    <%= f.text_field :duration %>
+  </div>
+  <div class="field">
+    <%= f.label :noc_status %><br />
+    <%= f.text_field :noc_status %>
+  </div>
+  <div class="field">
+    <%= f.label :assigned_to %><br />
+    <%= f.text_field :assigned_to %>
+  </div>
+  <div class="field">
+    <%= f.label :dt_conducted_by %><br />
+    <%= f.text_field :dt_conducted_by %>
+  </div>
+  <div class="field">
+    <%= f.label :orf_sent_to %><br />
+    <%= f.text_field :orf_sent_to %>
+  </div>
+  <div class="field">
+    <%= f.fields_for :comments do |builder| %>
+      <%= render "comment_fields", :f => builder %>
+    <% end %>
+    <p><%= f.link_to_add "Add a comment", :comments, :class => "btn" %></p>
+  </div>
+
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

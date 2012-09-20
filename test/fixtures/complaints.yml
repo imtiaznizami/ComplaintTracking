@@ -1,0 +1,37 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  incident: MyString
+  problem_status: MyString
+  escalation_time: 2012-09-19 12:16:53
+  msisdn: MyString
+  party_a: MyString
+  alternate_number: MyString
+  ne_name: MyString
+  cell_id: MyString
+  brief_description: MyString
+  revenue_band: MyString
+  package_type: MyString
+  duration: MyString
+  noc_status: MyString
+  assigned_to: MyString
+  dt_conducted_by: MyString
+  orf_sent_to: MyString
+
+two:
+  incident: MyString
+  problem_status: MyString
+  escalation_time: 2012-09-19 12:16:53
+  msisdn: MyString
+  party_a: MyString
+  alternate_number: MyString
+  ne_name: MyString
+  cell_id: MyString
+  brief_description: MyString
+  revenue_band: MyString
+  package_type: MyString
+  duration: MyString
+  noc_status: MyString
+  assigned_to: MyString
+  dt_conducted_by: MyString
+  orf_sent_to: MyString

@@ -1,4 +1,6 @@
 ComplaintTracker::Application.routes.draw do
+  resources :complaints
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

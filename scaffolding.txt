@@ -1,0 +1,14 @@
+rails g Complaint incident:string problem_status:string escalation_time:datetime msisdn:string party_a:string alternate_number:string ne_name:string cell_id:string brief_description:string revenue_band:string package_type:string duration:string noc_status:string assigned_to:string dt_conducted_by:string orf_sent_to:string
+
+rails g model Comment content:text commentable_id:integer commentable_type:string user_id:integer
+
+
+
+
+==================
+attach database "d.sqlite3" as d;
+
+insert into comments(id, content, commentable_id, commentable_type, created_at, updated_at) select id, content, commentable_id, commentable_type, created_at, updated_at from d.comments; 
+
+insert into  complaints(id, incident, problem_status, escalation_time, msisdn, party_a, alternate_number, ne_name, cell_id, brief_description, revenue_band, package_type, duration, noc_status, assigned_to, dt_conducted_by, orf_sent_to, created_at, updated_at) select id, incident, status, escalation_time, msisdn, party_a, alternate_number, ne_name, cell_id, title, revenue_band, package_type, duration, noc_status, assigned_to, dt_conducted_by, orf_sent_to, created_at, updated_at from d.complaints;
+

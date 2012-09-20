@@ -1,14 +1,67 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
+<!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
 <head>
-  <title>ComplaintTracker</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <meta charset="utf-8">
 
-<%= yield %>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+  <title>app_name</title>
+  <meta name="description" content="">
+
+  <meta name="viewport" content="width=device-width">
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag("application", :media => "all") %>
+  <script src="/assets/modernizr-2.5.3.min.js"></script>
+</head>
+
+	<div class="navbar">
+		<div class="navbar-inner">
+			<a class="brand" href="#">ComplaintTracker</a>
+			<ul class="nav">
+				<li class="active"><a href="#">All Complaints</a></li>
+				<li><a href="#">Open Complaints</a></li>
+				<li><a href="#">My Open Complaints</a></li>
+			</ul>
+
+			<form class="navbar-search pull-right">
+				<input type="text" class="search-query" placeholder="Search">
+			</form>
+
+		</div>
+	</div>
+
+
+
+<body>
+  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
+chromium.org/developers/how-tos/chrome-frame-getting-started -->
+  <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
+  <header>
+
+  </header>
+
+  <div role="main">
+    <%= yield %>
+  </div>
+  
+  <footer>
+
+  </footer>
+
+
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+  <script>window.jQuery || document.write('<script src="/assets/jquery-1.7.1.min.js"><\/script>')</script>
+
+  <!-- scripts concatenated and minified via build script -->
+  <%= javascript_include_tag "application" %>
+  <!-- end scripts -->
 
 </body>
 </html>
+
+
