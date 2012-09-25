@@ -79,7 +79,7 @@
     <%= f.fields_for :comments do |builder| %>
       <%= render "comment_fields", :f => builder %>
     <% end %>
-    <p><%= f.link_to_add "Add a comment", :comments, :class => "btn" %></p>
+    <p><%= f.link_to_add "Add a comment", :comments %></p>
   </div>
 
   

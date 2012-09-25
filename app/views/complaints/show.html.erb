@@ -92,9 +92,9 @@
 <p>
   <h3>Complaints From Same Number:</h3>
   <% for previous_complaint in @previous_complaints %>
-    <br /><%= link_to previous_complaint.incident.to_s, previous_complaint, :class => "btn" %>
+    <br /><%= link_to previous_complaint.incident.to_s, previous_complaint %>
   <% end %>
 </p>
 
-<%= link_to 'Edit', edit_complaint_path(@complaint), :class => "btn" %> |
-<%= link_to 'Back', complaints_path, :class => "btn" %>
+<%= link_to 'Edit', edit_complaint_path(@complaint) %> |
+<%= link_to 'Back', complaints_path %>

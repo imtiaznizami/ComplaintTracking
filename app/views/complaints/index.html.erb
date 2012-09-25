@@ -34,13 +34,13 @@
     <td><%= complaint.ne_name %></td>
     <td><%= complaint.cell_id %></td>
     <td><%= complaint.package_type %></td>
-    <td><%= link_to 'Show', complaint, :class => "btn" %></td>
-    <td><%= link_to 'Edit', edit_complaint_path(complaint), :class => "btn" %></td>
-    <td><%= link_to 'Destroy', complaint, confirm: 'Are you sure?', method: :delete, :class => "btn" %></td>
+    <td><%= link_to 'Show', complaint %></td>
+    <td><%= link_to 'Edit', edit_complaint_path(complaint) %></td>
+    <td><%= link_to 'Destroy', complaint, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Complaint', new_complaint_path, :class => "btn" %>
+<%= link_to 'New Complaint', new_complaint_path %>
