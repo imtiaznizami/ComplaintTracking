@@ -19,3 +19,4 @@
 *swp
 *.bak
 *.lock
+/public/new_complaints/*
