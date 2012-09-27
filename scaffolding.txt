@@ -12,3 +12,8 @@ insert into comments(id, content, commentable_id, commentable_type, created_at, 
 
 insert into  complaints(id, incident, problem_status, escalation_time, msisdn, party_a, alternate_number, ne_name, cell_id, brief_description, revenue_band, package_type, duration, noc_status, assigned_to, dt_conducted_by, orf_sent_to, created_at, updated_at) select id, incident, status, escalation_time, msisdn, party_a, alternate_number, ne_name, cell_id, title, revenue_band, package_type, duration, noc_status, assigned_to, dt_conducted_by, orf_sent_to, created_at, updated_at from d.complaints;
 
+insert into  complaints(id, incident, problem_status, escalation_time, msisdn, party_a, alternate_number, ne_name, cell_id, brief_description, revenue_band, package_type, duration, noc_status, assigned_to, dt_conducted_by, orf_sent_to, created_at, updated_at) select id, incident, problem_status, escalation_time, msisdn, party_a, alternate_number, ne_name, cell_id, brief_description, revenue_band, package_type, duration, noc_status, assigned_to, dt_conducted_by, orf_sent_to, created_at, updated_at from d.complaints;
+
+insert into assignments(id, role_id, user_id) select id, role_id, user_id from d.assignments;
+
+insert into roles(id, name, created_at, updated_at) select id, name, created_at, updated_at from d.roles;
