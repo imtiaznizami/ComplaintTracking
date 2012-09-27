@@ -1,6 +1,6 @@
 require 'csv'
 
-namespace :complaint do
+namespace :complaints do
 
   desc "Add new complaints to database"
   task :add => :environment do
@@ -39,7 +39,7 @@ namespace :complaint do
               c.party_a = line[:party_a] == nil ? nil : line[:party_a].to_s
               c.ne_name = line[:ne_name] == nil ? nil : line[:ne_name].to_s
               c.cell_id = line[:cell_id] == nil ? nil : line[:cell_id].to_s
-              c.title = line[:title] == nil ? nil : line[:title].to_s
+              c.brief_description = line[:title] == nil ? nil : line[:title].to_s
               c.revenue_band = line[:revenue_band] == nil ? nil : line[:revenue_band].to_s
               c.package_type = line[:package_type] == nil ? nil : line[:package_type].to_s
               c.duration = line[:duration] == nil ? nil : line[:duration].to_s
@@ -60,7 +60,7 @@ namespace :complaint do
             c.party_a = line[:party_a] == nil ? nil : line[:party_a].to_s
             c.ne_name = line[:ne_name] == nil ? nil : line[:ne_name].to_s
             c.cell_id = line[:cell_id] == nil ? nil : line[:cell_id].to_s
-            c.title = line[:title] == nil ? nil : line[:title].to_s
+            c.brief_description = line[:title] == nil ? nil : line[:title].to_s
             c.revenue_band = line[:revenue_band] == nil ? nil : line[:revenue_band].to_s
             c.package_type = line[:package_type] == nil ? nil : line[:package_type].to_s
             c.duration = line[:duration] == nil ? nil : line[:duration].to_s

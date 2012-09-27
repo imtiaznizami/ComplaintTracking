@@ -3,3 +3,10 @@
 
 en:
   hello: "Hello world"
+  unauthorized:
+    manage:
+      all: "Not authorized to %{action} %{subject}."
+      user: "Not allowed to manage other user accounts."
+    update:
+      complaint: "Not allowed to update this complaint."
+      comment: "Not allowed to update this comment."
