@@ -23,12 +23,12 @@ namespace :complaints do
   
           print "."
   
-          if !Complaint.where(:incident => line[:incident_id]).first()
+          if !Complaint.where(:incident => line[:number]).first()
             Complaint.new do |c|
               count_added = count_added + 1
-              c.incident = line[:incident_id] == nil ? nil : line[:incident_id].to_s
+              c.incident = line[:number] == nil ? nil : line[:number].to_s
               c.assigned_to = line[:assign_to] == nil ? nil : line[:assign_to].to_s
-              c.noc_status = line[:status] == nil ? nil : line[:status].to_s
+              c.noc_status = line[:problem_status] == nil ? nil : line[:problem_status].to_s
   
               if (line[:escalation_time] != nil)
                 date = line[:escalation_time].split(" ")[0].split("/").reverse.join("-")
@@ -39,7 +39,7 @@ namespace :complaints do
               c.party_a = line[:party_a] == nil ? nil : line[:party_a].to_s
               c.ne_name = line[:ne_name] == nil ? nil : line[:ne_name].to_s
               c.cell_id = line[:cell_id] == nil ? nil : line[:cell_id].to_s
-              c.brief_description = line[:title] == nil ? nil : line[:title].to_s
+              c.brief_description = line[:brief_description] == nil ? nil : line[:brief_description].to_s
               c.revenue_band = line[:revenue_band] == nil ? nil : line[:revenue_band].to_s
               c.package_type = line[:package_type] == nil ? nil : line[:package_type].to_s
               c.duration = line[:duration] == nil ? nil : line[:duration].to_s
@@ -47,9 +47,9 @@ namespace :complaints do
             end
           else
             count_updated = count_updated + 1
-            c = Complaint.where(:incident => line[:incident_id]).first()
+            c = Complaint.where(:incident => line[:number]).first()
             c.assigned_to = line[:assign_to] == nil ? nil : line[:assign_to].to_s
-            c.noc_status =  line[:status] == nil ? nil : line[:status].to_s
+            c.noc_status =  line[:problem_status] == nil ? nil : line[:problem_status].to_s
   
             if (line[:escalation_time] != nil)
               date = line[:escalation_time].split(" ")[0].split("/").reverse.join("-")
@@ -60,7 +60,7 @@ namespace :complaints do
             c.party_a = line[:party_a] == nil ? nil : line[:party_a].to_s
             c.ne_name = line[:ne_name] == nil ? nil : line[:ne_name].to_s
             c.cell_id = line[:cell_id] == nil ? nil : line[:cell_id].to_s
-            c.brief_description = line[:title] == nil ? nil : line[:title].to_s
+            c.brief_description = line[:brief_description] == nil ? nil : line[:brief_description].to_s
             c.revenue_band = line[:revenue_band] == nil ? nil : line[:revenue_band].to_s
             c.package_type = line[:package_type] == nil ? nil : line[:package_type].to_s
             c.duration = line[:duration] == nil ? nil : line[:duration].to_s
@@ -99,9 +99,9 @@ namespace :complaints do
   
           print "."
   
-          if Complaint.where(:incident => line[:incident_id]).first()
+          if Complaint.where(:incident => line[:number]).first()
             count_updated = count_updated + 1
-            c = Complaint.where(:incident => line[:incident_id]).first()
+            c = Complaint.where(:incident => line[:number]).first()
             c.package_type = line[:package_type]
             c.save!
           end

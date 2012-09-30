@@ -20,6 +20,7 @@ class ComplaintsController < ApplicationController
   # GET /complaints/1.json
   def show
     @complaint = Complaint.find(params[:id])
+    @complaint = @complaint.versions[params[:version].to_i].reify if params[:version]
     @previous_complaints = @complaint.complaints_with_matching_telephone
 
     respond_to do |format|

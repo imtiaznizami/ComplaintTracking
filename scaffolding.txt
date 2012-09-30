@@ -17,3 +17,5 @@ insert into  complaints(id, incident, problem_status, escalation_time, msisdn, p
 insert into assignments(id, role_id, user_id) select id, role_id, user_id from d.assignments;
 
 insert into roles(id, name, created_at, updated_at) select id, name, created_at, updated_at from d.roles;
+
+insert into users(id, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip, created_at, updated_at) select id, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip, created_at, updated_at from d.users;

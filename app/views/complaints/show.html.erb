@@ -1,5 +1,18 @@
 <p id="notice"><%= notice %></p>
 
+<% unless @complaint.previous_version.nil? %>
+  <%= link_to "Previous version", :version => @complaint.previous_version.version.index %>
+<% end %>
+
+<% unless @complaint.next_version.nil? %>
+  | <%= link_to "Next version", :version => @complaint.next_version.version.index %>
+<% end %>
+
+<% unless @complaint.live? %>
+  | <%= link_to "Latest version", :version => nil %>
+<% end %>
+
+
 <p>
   <b>Incident:</b>
   <%= @complaint.incident %>
