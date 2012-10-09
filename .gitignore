@@ -20,3 +20,4 @@
 *.bak
 *.lock
 /public/new_complaints/*
+~$*
