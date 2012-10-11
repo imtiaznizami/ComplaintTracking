@@ -11,11 +11,38 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120928072558) do
+ActiveRecord::Schema.define(:version => 20121009061844) do
+
+  create_table "addresses", :force => true do |t|
+    t.decimal  "latitude"
+    t.decimal  "longitude"
+    t.string   "line"
+    t.string   "area_name"
+    t.string   "postal_code"
+    t.string   "city"
+    t.string   "union_council"
+    t.string   "tehsil"
+    t.string   "district"
+    t.string   "province"
+    t.string   "region"
+    t.integer  "site_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
 
   create_table "assignments", :force => true do |t|
     t.integer "role_id"
     t.integer "user_id"
+  end
+
+  create_table "audits", :force => true do |t|
+    t.datetime "date"
+    t.integer  "user_id"
+    t.string   "rigger"
+    t.string   "status"
+    t.integer  "site_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "comments", :force => true do |t|
@@ -48,10 +75,38 @@ ActiveRecord::Schema.define(:version => 20120928072558) do
     t.datetime "updated_at",        :null => false
   end
 
+  create_table "partners", :force => true do |t|
+    t.string   "status"
+    t.string   "operator"
+    t.string   "code"
+    t.integer  "site_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "roles", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "sites", :force => true do |t|
+    t.string   "code"
+    t.string   "name"
+    t.string   "equipment_vendor"
+    t.string   "equipment_type"
+    t.string   "type"
+    t.string   "coverage_type"
+    t.string   "cabinet_type"
+    t.string   "structure_type"
+    t.decimal  "structure_height"
+    t.decimal  "building_height"
+    t.decimal  "amsl"
+    t.string   "phase"
+    t.datetime "on_air_date"
+    t.string   "status"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "users", :force => true do |t|

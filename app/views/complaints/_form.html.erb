@@ -1,4 +1,4 @@
-<%= nested_form_for(@complaint) do |f| %>
+<%= nested_form_for(@complaint, :html => {:class => "form-horizontal"}) do |f| %>
   <% if @complaint.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@complaint.errors.count, "error") %> prohibited this complaint from being saved:</h2>
@@ -11,75 +11,119 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :incident %><br />
-    <%= f.text_field :incident %>
-  </div>
-  <div class="field">
-    <%= f.label :problem_status %><br />
-    <%= f.text_field :problem_status %>
-  </div>
-  <div class="field">
-    <%= f.label :escalation_time %><br />
-    <%= f.datetime_select :escalation_time %>
-  </div>
-  <div class="field">
-    <%= f.label :msisdn %><br />
-    <%= f.text_field :msisdn %>
-  </div>
-  <div class="field">
-    <%= f.label :party_a %><br />
-    <%= f.text_field :party_a %>
-  </div>
-  <div class="field">
-    <%= f.label :alternate_number %><br />
-    <%= f.text_field :alternate_number %>
-  </div>
-  <div class="field">
-    <%= f.label :ne_name %><br />
-    <%= f.text_field :ne_name %>
-  </div>
-  <div class="field">
-    <%= f.label :cell_id %><br />
-    <%= f.text_field :cell_id %>
-  </div>
-  <div class="field">
-    <%= f.label :brief_description %><br />
-    <%= f.text_field :brief_description %>
-  </div>
-  <div class="field">
-    <%= f.label :revenue_band %><br />
-    <%= f.text_field :revenue_band %>
-  </div>
-  <div class="field">
-    <%= f.label :package_type %><br />
-    <%= f.text_field :package_type %>
-  </div>
-  <div class="field">
-    <%= f.label :duration %><br />
-    <%= f.text_field :duration %>
-  </div>
-  <div class="field">
-    <%= f.label :noc_status %><br />
-    <%= f.text_field :noc_status %>
-  </div>
-  <div class="field">
-    <%= f.label :assigned_to %><br />
-    <%= f.text_field :assigned_to %>
-  </div>
-  <div class="field">
-    <%= f.label :dt_conducted_by %><br />
-    <%= f.text_field :dt_conducted_by %>
-  </div>
-  <div class="field">
-    <%= f.label :orf_sent_to %><br />
-    <%= f.text_field :orf_sent_to %>
-  </div>
-  <div class="field">
-    <%= f.fields_for :comments do |builder| %>
-      <%= render "comment_fields", :f => builder %>
-    <% end %>
-    <p><%= f.link_to_add "Add a comment", :comments %></p>
+  <div class="row">
+    <div class="span5">
+      <div class="control-group">
+        <%= f.label :incident, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :incident %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :escalation_time, :class => "control-label" %>
+        <div class="controls" >
+          <div class="input-append date" id="escalation-time" data-date="12-10-2012" data-date-format="dd-mm-yyyy">
+            <%= f.text_field :escalation_time, :class => "span2" %>
+            <span class="add-on"><i class="icon-th"></i></span>
+          </div>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :msisdn, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :msisdn %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :party_a, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :party_a %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :alternate_number, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :alternate_number %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :ne_name, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :ne_name %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :cell_id, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :cell_id %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :brief_description, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :brief_description %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :revenue_band, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :revenue_band %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :package_type, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :package_type %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :duration, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :duration %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :orf_sent_to, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :orf_sent_to %>
+        </div>
+      </div>
+    </div>
+  
+    <div class="span5">
+
+      <div class="control-group">
+        <%= f.label :problem_status, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :problem_status %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :noc_status, :class => "control-label" %>
+        <div class="controls">
+          <%= f.select :noc_status, ["Completed", "InProgress"] %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :assigned_to, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :assigned_to %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :dt_conducted_by, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :dt_conducted_by %>
+        </div>
+      </div>
+
+      <div class="control-group">
+        <%= f.fields_for :comments do |builder| %>
+          <%= render "comment_fields", :f => builder %>
+        <% end %>
+        <p><%= f.link_to_add "Add a comment", :comments %></p>
+      </div>
+    </div>
   </div>
 
   

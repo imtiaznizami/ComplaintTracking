@@ -1,0 +1,24 @@
+
+<div class="control-group">
+  <%= f.label :date, :class => "control-label" %>
+  <div class="controls" >
+    <div class="input-append date" id="audit-date" data-date="12-10-2012" data-date-format="dd-mm-yyyy">
+      <%= f.text_field :date, :class => "span2" %>
+      <span class="add-on"><i class="icon-th"></i></span>
+    </div>
+  </div>
+</div>
+
+<div class="control-group">
+  <%= f.label :rigger, :class => "control-label" %>
+  <div class="controls" >
+    <%= f.text_field :rigger %>
+  </div>
+</div>
+
+<div class="control-group">
+  <%= f.label :status, :class => "control-label" %>
+  <div class="controls">
+    <%= f.text_field :status %>
+  </div>
+</div>

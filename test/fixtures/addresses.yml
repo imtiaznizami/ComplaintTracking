@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  latitude: 9.99
+  longitude: 9.99
+  line: MyString
+  area_name: MyString
+  postal_code: MyString
+  city: MyString
+  union_council: MyString
+  tehsil: MyString
+  district: MyString
+  province: MyString
+  region: MyString
+  site_id: 1
+
+two:
+  latitude: 9.99
+  longitude: 9.99
+  line: MyString
+  area_name: MyString
+  postal_code: MyString
+  city: MyString
+  union_council: MyString
+  tehsil: MyString
+  district: MyString
+  province: MyString
+  region: MyString
+  site_id: 1

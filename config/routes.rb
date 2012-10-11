@@ -1,4 +1,12 @@
 ComplaintTracker::Application.routes.draw do
+  resources :audits
+
+  resources :partners
+
+  resources :addresses
+
+  resources :sites
+
   devise_for :users
   # devise_for :users do get '/users/sign_out' => 'devise/sessions#destroy' end
 

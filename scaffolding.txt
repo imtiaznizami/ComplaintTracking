@@ -1,4 +1,4 @@
-rails g Complaint incident:string problem_status:string escalation_time:datetime msisdn:string party_a:string alternate_number:string ne_name:string cell_id:string brief_description:string revenue_band:string package_type:string duration:string noc_status:string assigned_to:string dt_conducted_by:string orf_sent_to:string
+rails g scaffold Complaint incident:string problem_status:string escalation_time:datetime msisdn:string party_a:string alternate_number:string ne_name:string cell_id:string brief_description:string revenue_band:string package_type:string duration:string noc_status:string assigned_to:string dt_conducted_by:string orf_sent_to:string
 
 rails g model Comment content:text commentable_id:integer commentable_type:string user_id:integer
 
@@ -19,3 +19,17 @@ insert into assignments(id, role_id, user_id) select id, role_id, user_id from d
 insert into roles(id, name, created_at, updated_at) select id, name, created_at, updated_at from d.roles;
 
 insert into users(id, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip, created_at, updated_at) select id, email, encrypted_password, reset_password_token, reset_password_sent_at, remember_created_at, sign_in_count, current_sign_in_at, last_sign_in_at, current_sign_in_ip, last_sign_in_ip, created_at, updated_at from d.users;
+
+
+---------------------
+
+rails g scaffold Site code:string name:string equipment_vendor:string equipment_type:string type:string coverage_type:string cabinet_type:string structure_type:string structure_height:decimal building_height:decimal amsl:decimal phase:string on_air_date:datetime status:string 
+
+
+rails g scaffold Address latitude:decimal longitude:decimal line:string area_name:string postal_code:string city:string union_council:string tehsil:string district:string province:string region:string site_id:integer
+
+
+rails g scaffold Partner status:string operator:string code:string site_id:integer
+
+
+rails g scaffold Audit date:datetime user_id:integer rigger:string status:string site_id:integer 

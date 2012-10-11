@@ -1,0 +1,65 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Latitude:</b>
+  <%= @address.latitude %>
+</p>
+
+<p>
+  <b>Longitude:</b>
+  <%= @address.longitude %>
+</p>
+
+<p>
+  <b>Line:</b>
+  <%= @address.line %>
+</p>
+
+<p>
+  <b>Area name:</b>
+  <%= @address.area_name %>
+</p>
+
+<p>
+  <b>Postal code:</b>
+  <%= @address.postal_code %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @address.city %>
+</p>
+
+<p>
+  <b>Union council:</b>
+  <%= @address.union_council %>
+</p>
+
+<p>
+  <b>Tehsil:</b>
+  <%= @address.tehsil %>
+</p>
+
+<p>
+  <b>District:</b>
+  <%= @address.district %>
+</p>
+
+<p>
+  <b>Province:</b>
+  <%= @address.province %>
+</p>
+
+<p>
+  <b>Region:</b>
+  <%= @address.region %>
+</p>
+
+<p>
+  <b>Site:</b>
+  <%= @address.site_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_address_path(@address) %> |
+<%= link_to 'Back', addresses_path %>

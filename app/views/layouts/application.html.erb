@@ -1,86 +1,122 @@
 <!doctype html>
-<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
-<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
-<!--[if IE 8]> <html class="no-js lt-ie9" lang="en"> <![endif]-->
-<!-- Consider adding a manifest.appcache: h5bp.com/d/Offline -->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en"> <!--<![endif]-->
-<head>
-  <meta charset="utf-8">
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title><%= content_for?(:title) ? yield(:title) : "Myapp" %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Site database for Telenor Pakistan">
+    <meta name="author" content="Imtiaz A. Nizami">
 
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <!-- Styles
+    ================================================== -->
+    <%= stylesheet_link_tag    "application", :media => "all" %>
 
-  <title>app_name</title>
-  <meta name="description" content="">
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
 
-  <meta name="viewport" content="width=device-width">
-  <%= csrf_meta_tags %>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    
+    <%= yield(:head) %>
+  </head>
 
-  <%= stylesheet_link_tag("application", :media => "all") %>
-  <script src="/assets/modernizr-2.5.3.min.js"></script>
-</head>
-
-	<div class="navbar">
-		<div class="navbar-inner">
-			<a class="brand" href="#">ComplaintTracker</a>
-			<ul class="nav">
-				<li class="active"><a href="#">All Complaints</a></li>
-				<li><a href="#">Open Complaints</a></li>
-				<li><a href="#">My Open Complaints</a></li>
-			</ul>
-
-      <ul class="nav pull-right">
-        <% if user_signed_in? %>
-
-          <li>
-            <%= current_user.email %> 
-          </li>
-          <li>
-            <%= link_to('Sign out', destroy_user_session_path, :method=>'delete') %>
-          </li>
-        <% else %>
-          <li>
-            <%= link_to('Sign in', new_user_session_path)  %>
-          </li>
-        <% end %>
-      </ul>
-
-		</div>
-	</div>
-
-
-
-<body>
-  <!-- Prompt IE 6 users to install Chrome Frame. Remove this if you support IE 6.
-chromium.org/developers/how-tos/chrome-frame-getting-started -->
-  <!--[if lt IE 7]><p class=chromeframe>Your browser is <em>ancient!</em> <a href="http://browsehappy.com/">Upgrade to a different browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">install Google Chrome Frame</a> to experience this site.</p><![endif]-->
-  <header>
-
-  </header>
-
-  <% flash.each do |name, msg| %>
-    <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
-      <a class="close" data-dismiss="alert">&#215;</a>
-      <%= content_tag :div, msg, :id => "flash_#{name}" if msg.is_a?(String) %>
-    </div>
-  <% end %>
-
-  <div role="main">
-    <%= yield %>
-  </div>
+  <body>
   
-  <footer>
+    <!-- Navbar
+    ================================================== -->
+  	<div class="navbar navbar-inverse navbar-fixed-top">
+  		<div class="navbar-inner">
+    		<div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+    			<a class="brand" href="#">ComplaintTracker</a>
+    			<div class="nav-collapse collapse">
+      			<ul class="nav">
+      				<li class="active"><a href="#">All Complaints</a></li>
+      				<li><a href="#">Open Complaints</a></li>
+      				<li><a href="#">My Open Complaints</a></li>
+      			</ul>
 
-  </footer>
+            <ul class="nav pull-right">
+              <% if user_signed_in? %>
+                <li>
+                  <%= current_user.email %> 
+                </li>
+                <li>
+                  <%= link_to('Sign out', destroy_user_session_path, :method=>'delete') %>
+                </li>
+              <% else %>
+                <li>
+                  <%= link_to('Sign in', new_user_session_path)  %>
+                </li>
+              <% end %>
+            </ul>
+          </div><!--/.nav-collapse -->
+    		</div>
+  		</div>
+  	</div>
+
+    <!-- Main Page
+    ================================================== -->
+    <div class="container">
+      <div id="main" role="main">
+        <div class="content">
+           <div class="row">
+
+             <!-- Sidebar
+             ================================================== -->
+
+             <div class="span2">
+               <div class="well sidebar-nav">
+                 <ul class="nav nav-list">
+                   <li class="nav-header">Sidebar</li>
+                   <li class="active"><a href="#">Link</a></li>
+                   <li><a href="#">Link</a></li>
+                   <li><a href="#">Link</a></li>
+                   <li><a href="#">Link</a></li>
+                   <li class="nav-header">Sidebar</li>
+                   <li><a href="#">Link</a></li>
+                   <li><a href="#">Link</a></li>
+                   <li><a href="#">Link</a></li>
+                   <li><a href="#">Link</a></li>
+                   <li><a href="#">Link</a></li>
+                   <li><a href="#">Link</a></li>
+                   <li class="nav-header">Sidebar</li>
+                   <li><a href="#">Link</a></li>
+                   <li><a href="#">Link</a></li>
+                   <li><a href="#">Link</a></li>
+                 </ul>
+               </div><!--/.well -->
+             </div><!--/span-->
+
+            <!-- Content
+             ================================================== -->
+            <div class="span10">
+              <%= render 'layouts/messages' %>
+              <%= yield %>
+            </div>
+
+          </div>
+          <footer>
+          </footer>
+        </div>
+      </div> <!--! end of #main -->
+    </div> <!--! end of .container -->
 
 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
-  <script>window.jQuery || document.write('<script src="/assets/jquery-1.7.1.min.js"><\/script>')</script>
+    <!-- Javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <%= javascript_include_tag "application" %>
+    <%= csrf_meta_tags %>
 
-  <!-- scripts concatenated and minified via build script -->
-  <%= javascript_include_tag "application" %>
-  <!-- end scripts -->
-
-</body>
+  </body>
 </html>
-
-

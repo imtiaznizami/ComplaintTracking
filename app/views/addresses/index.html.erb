@@ -1,0 +1,45 @@
+<h1>Listing addresses</h1>
+
+<table>
+  <tr>
+    <th>Latitude</th>
+    <th>Longitude</th>
+    <th>Line</th>
+    <th>Area name</th>
+    <th>Postal code</th>
+    <th>City</th>
+    <th>Union council</th>
+    <th>Tehsil</th>
+    <th>District</th>
+    <th>Province</th>
+    <th>Region</th>
+    <th>Site</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @addresses.each do |address| %>
+  <tr>
+    <td><%= address.latitude %></td>
+    <td><%= address.longitude %></td>
+    <td><%= address.line %></td>
+    <td><%= address.area_name %></td>
+    <td><%= address.postal_code %></td>
+    <td><%= address.city %></td>
+    <td><%= address.union_council %></td>
+    <td><%= address.tehsil %></td>
+    <td><%= address.district %></td>
+    <td><%= address.province %></td>
+    <td><%= address.region %></td>
+    <td><%= address.site_id %></td>
+    <td><%= link_to 'Show', address %></td>
+    <td><%= link_to 'Edit', edit_address_path(address) %></td>
+    <td><%= link_to 'Destroy', address, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Address', new_address_path %>

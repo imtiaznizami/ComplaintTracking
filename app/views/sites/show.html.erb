@@ -1,0 +1,47 @@
+<div class="row show-grid">
+  <div class="span3">
+    <!-- Site attributes
+    ================================================== -->
+    <% @site.attributes.reject { |k, v| ["id", "created_at", "updated_at"].include?(k) }.each_pair do |name, value| %>
+      <p>
+        <b><%= name.humanize %>:</b>
+        <%= value %>
+      </p>
+    <% end %>
+  </div>
+  
+  <div class="span3">
+    <h3> Address </h3>
+    <!-- Site address attributes
+    ================================================== -->
+    <% @site.address.attributes.reject { |k, v| ["id", "created_at", "updated_at", "site_id"].include?(k) }.each_pair do |name, value| %>
+      <p>
+        <b><%= name.humanize %>:</b>
+        <%= value %>
+      </p>
+    <% end %>
+  </div>
+  
+  <div class="span4">
+    <!-- Site partner attributes
+    ================================================== -->
+    <% @site.partner.attributes.reject { |k, v| ["id", "created_at", "updated_at", "site_id"].include?(k) }.each_pair do |name, value| %>
+      <p>
+        <b><%= name.humanize %>:</b>
+        <%= value %>
+      </p>
+    <% end %>
+    
+    <!-- Site audit attributes
+    ================================================== -->
+    <% @site.audit.attributes.reject { |k, v| ["id", "created_at", "updated_at", "site_id"].include?(k) }.each_pair do |name, value| %>
+      <p>
+        <b><%= name.humanize %>:</b>
+        <%= value %>
+      </p>
+    <% end %>
+    </div>
+</div>
+
+<%= link_to 'Edit', edit_site_path(@site) %> |
+<%= link_to 'Back', sites_path %>

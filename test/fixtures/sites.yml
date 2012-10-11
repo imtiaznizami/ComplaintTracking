@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  code: MyString
+  name: MyString
+  equipment_vendor: MyString
+  equipment_type: MyString
+  type: 
+  coverage_type: MyString
+  cabinet_type: MyString
+  structure_type: MyString
+  structure_height: 9.99
+  building_height: 9.99
+  amsl: 9.99
+  phase: MyString
+  on_air_date: 2012-10-09 11:12:41
+  status: MyString
+
+two:
+  code: MyString
+  name: MyString
+  equipment_vendor: MyString
+  equipment_type: MyString
+  type: 
+  coverage_type: MyString
+  cabinet_type: MyString
+  structure_type: MyString
+  structure_height: 9.99
+  building_height: 9.99
+  amsl: 9.99
+  phase: MyString
+  on_air_date: 2012-10-09 11:12:41
+  status: MyString

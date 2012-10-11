@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <ul class="pager">
 
   <% if @complaint.previous_version.nil? %>
@@ -39,102 +37,36 @@
 
 </ul>
 
+<div class="row show-grid">
+  <div class="span5">
+    <!-- Complaint attributes
+    ================================================== -->
+    <% @complaint.attributes.reject { |k, v| ["id", "created_at", "updated_at"].include?(k) }.each_pair do |name, value| %>
+      <p>
+        <b><%= name.humanize %>:</b>
+        <%= value %>
+      </p>
+    <% end %>
+  </div>
 
-<p>
-  <b>Incident:</b>
-  <%= @complaint.incident %>
-</p>
+  <div class="span5">
+    <p>
+      <h4>Comments</h4>
+      <hr />
+      <% for comment in @complaint.comments %>
+        <%= simple_format(comment.content) %>
+      <hr />
+      <% end %>
+    </p>
 
-<p>
-  <b>Problem status:</b>
-  <%= @complaint.problem_status %>
-</p>
-
-<p>
-  <b>Escalation time:</b>
-  <%= @complaint.escalation_time %>
-</p>
-
-<p>
-  <b>Msisdn:</b>
-  <%= @complaint.msisdn %>
-</p>
-
-<p>
-  <b>Party a:</b>
-  <%= @complaint.party_a %>
-</p>
-
-<p>
-  <b>Alternate number:</b>
-  <%= @complaint.alternate_number %>
-</p>
-
-<p>
-  <b>Ne name:</b>
-  <%= @complaint.ne_name %>
-</p>
-
-<p>
-  <b>Cell:</b>
-  <%= @complaint.cell_id %>
-</p>
-
-<p>
-  <b>Brief description:</b>
-  <%= @complaint.brief_description %>
-</p>
-
-<p>
-  <b>Revenue band:</b>
-  <%= @complaint.revenue_band %>
-</p>
-
-<p>
-  <b>Package type:</b>
-  <%= @complaint.package_type %>
-</p>
-
-<p>
-  <b>Duration:</b>
-  <%= @complaint.duration %>
-</p>
-
-<p>
-  <b>Noc status:</b>
-  <%= @complaint.noc_status %>
-</p>
-
-<p>
-  <b>Assigned to:</b>
-  <%= @complaint.assigned_to %>
-</p>
-
-<p>
-  <b>Dt conducted by:</b>
-  <%= @complaint.dt_conducted_by %>
-</p>
-
-<p>
-  <b>Orf sent to:</b>
-  <%= @complaint.orf_sent_to %>
-</p>
-
-<p>
-  <h3>Comments</h3>
-  <hr />
-  <% for comment in @complaint.comments %>
-    <%= simple_format(comment.content) %>
-    <hr />
-  <% end %>
-</p>
-
-<p>
-  <h3>Complaints From Same Number:</h3>
-  <% for previous_complaint in @previous_complaints %>
-    <br /><%= link_to previous_complaint.incident.to_s, previous_complaint %>
-  <% end %>
-</p>
+    <p>
+      <h4>Complaints From Same Number:</h4>
+      <% for previous_complaint in @previous_complaints %>
+        <br /><%= link_to previous_complaint.incident.to_s, previous_complaint %>
+      <% end %>
+    </p>
+  </div>
+</div>
 
 <%= link_to 'Edit', edit_complaint_path(@complaint) %> |
 <%= link_to 'Back', complaints_path %>

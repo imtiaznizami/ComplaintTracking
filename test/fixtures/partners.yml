@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  status: MyString
+  operator: MyString
+  code: MyString
+  site_id: 1
+
+two:
+  status: MyString
+  operator: MyString
+  code: MyString
+  site_id: 1
