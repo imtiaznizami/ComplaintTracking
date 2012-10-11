@@ -1,5 +1,6 @@
 <div class="row show-grid">
   <div class="span3">
+    <h4> Specifications </h4>
     <!-- Site attributes
     ================================================== -->
     <% @site.attributes.reject { |k, v| ["id", "created_at", "updated_at"].include?(k) }.each_pair do |name, value| %>
@@ -11,7 +12,7 @@
   </div>
   
   <div class="span3">
-    <h3> Address </h3>
+    <h4> Address Fields </h4>
     <!-- Site address attributes
     ================================================== -->
     <% @site.address.attributes.reject { |k, v| ["id", "created_at", "updated_at", "site_id"].include?(k) }.each_pair do |name, value| %>
@@ -23,6 +24,7 @@
   </div>
   
   <div class="span4">
+    <h4> Partner Fields </h4>
     <!-- Site partner attributes
     ================================================== -->
     <% @site.partner.attributes.reject { |k, v| ["id", "created_at", "updated_at", "site_id"].include?(k) }.each_pair do |name, value| %>
@@ -32,6 +34,8 @@
       </p>
     <% end %>
     
+    <hr />
+    <h4> Audit Fields </h4>
     <!-- Site audit attributes
     ================================================== -->
     <% @site.audit.attributes.reject { |k, v| ["id", "created_at", "updated_at", "site_id"].include?(k) }.each_pair do |name, value| %>
@@ -45,3 +49,15 @@
 
 <%= link_to 'Edit', edit_site_path(@site) %> |
 <%= link_to 'Back', sites_path %>
+
+<!-- Site comments
+================================================== -->
+<p>
+  <hr />
+  <h4>Comments</h4>
+  <% for comment in @site.comments %>
+    <%= simple_format(comment.content) %>
+    <hr />
+  <% end %>
+</p>
+

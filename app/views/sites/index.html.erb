@@ -1,21 +1,12 @@
 <h1>Listing sites</h1>
 
-<table>
+<table class="table table-striped table-bordered table-condensed">
   <tr>
     <th>Code</th>
-    <th>Name</th>
     <th>Equipment vendor</th>
-    <th>Equipment type</th>
-    <th>Type</th>
-    <th>Coverage type</th>
-    <th>Cabinet type</th>
-    <th>Structure type</th>
-    <th>Structure height</th>
-    <th>Building height</th>
-    <th>Amsl</th>
-    <th>Phase</th>
-    <th>On air date</th>
-    <th>Status</th>
+    <th>City</th>
+    <th>Partner Status</th>
+    <th>Partner Operator</th>
     <th></th>
     <th></th>
     <th></th>
@@ -24,19 +15,10 @@
 <% @sites.each do |site| %>
   <tr>
     <td><%= site.code %></td>
-    <td><%= site.name %></td>
     <td><%= site.equipment_vendor %></td>
-    <td><%= site.equipment_type %></td>
-    <td><%= site.type %></td>
-    <td><%= site.coverage_type %></td>
-    <td><%= site.cabinet_type %></td>
-    <td><%= site.structure_type %></td>
-    <td><%= site.structure_height %></td>
-    <td><%= site.building_height %></td>
-    <td><%= site.amsl %></td>
-    <td><%= site.phase %></td>
-    <td><%= site.on_air_date %></td>
-    <td><%= site.status %></td>
+    <td><%= site.address.city %></td>
+    <td><%= site.partner.status %></td>
+    <td><%= site.partner.operator %></td>
     <td><%= link_to 'Show', site %></td>
     <td><%= link_to 'Edit', edit_site_path(site) %></td>
     <td><%= link_to 'Destroy', site, confirm: 'Are you sure?', method: :delete %></td>

@@ -33,3 +33,9 @@ rails g scaffold Partner status:string operator:string code:string site_id:integ
 
 
 rails g scaffold Audit date:datetime user_id:integer rigger:string status:string site_id:integer 
+
+
+rails g scaffold Sector code:string cell:integer serving_area:string morphology:string bracket_type:string feeder_type:string feeder_length:decimal blocking:string site_id:integer 
+
+
+rails g scaffold antenna band:string vendor:string code:string hba:decimal azimuth:decimal mechanical_tilt:decimal electrical_tilt_900:decimal electrical_tilt_1800:decimal electrical_tilt_2100:decimal design_status:string sector_id:integer 
