@@ -1,0 +1,61 @@
+<%= form_for(@antenna) do |f| %>
+  <% if @antenna.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@antenna.errors.count, "error") %> prohibited this antenna from being saved:</h2>
+
+      <ul>
+      <% @antenna.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :band %><br />
+    <%= f.text_field :band %>
+  </div>
+  <div class="field">
+    <%= f.label :vendor %><br />
+    <%= f.text_field :vendor %>
+  </div>
+  <div class="field">
+    <%= f.label :code %><br />
+    <%= f.text_field :code %>
+  </div>
+  <div class="field">
+    <%= f.label :hba %><br />
+    <%= f.text_field :hba %>
+  </div>
+  <div class="field">
+    <%= f.label :azimuth %><br />
+    <%= f.text_field :azimuth %>
+  </div>
+  <div class="field">
+    <%= f.label :mechanical_tilt %><br />
+    <%= f.text_field :mechanical_tilt %>
+  </div>
+  <div class="field">
+    <%= f.label :electrical_tilt_900 %><br />
+    <%= f.text_field :electrical_tilt_900 %>
+  </div>
+  <div class="field">
+    <%= f.label :electrical_tilt_1800 %><br />
+    <%= f.text_field :electrical_tilt_1800 %>
+  </div>
+  <div class="field">
+    <%= f.label :electrical_tilt_2100 %><br />
+    <%= f.text_field :electrical_tilt_2100 %>
+  </div>
+  <div class="field">
+    <%= f.label :design_status %><br />
+    <%= f.text_field :design_status %>
+  </div>
+  <div class="field">
+    <%= f.label :sector_id %><br />
+    <%= f.number_field :sector_id %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -15,4 +15,9 @@ class User < ActiveRecord::Base
   def role?(role)
     return !!self.roles.find_by_name(role.to_s.camelize)
   end
+
+  def active_for_authentication?
+    super && !self.blocked
+  end
+  
 end

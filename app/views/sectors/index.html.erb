@@ -1,0 +1,39 @@
+<h1>Listing sectors</h1>
+
+<table>
+  <tr>
+    <th>Code</th>
+    <th>Cell</th>
+    <th>Serving area</th>
+    <th>Morphology</th>
+    <th>Bracket type</th>
+    <th>Feeder type</th>
+    <th>Feeder length</th>
+    <th>Blocking</th>
+    <th>Site</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @sectors.each do |sector| %>
+  <tr>
+    <td><%= sector.code %></td>
+    <td><%= sector.cell %></td>
+    <td><%= sector.serving_area %></td>
+    <td><%= sector.morphology %></td>
+    <td><%= sector.bracket_type %></td>
+    <td><%= sector.feeder_type %></td>
+    <td><%= sector.feeder_length %></td>
+    <td><%= sector.blocking %></td>
+    <td><%= sector.site_id %></td>
+    <td><%= link_to 'Show', sector %></td>
+    <td><%= link_to 'Edit', edit_sector_path(sector) %></td>
+    <td><%= link_to 'Destroy', sector, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Sector', new_sector_path %>

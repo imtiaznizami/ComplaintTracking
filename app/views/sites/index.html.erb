@@ -21,7 +21,7 @@
     <td><%= site.partner.operator %></td>
     <td><%= link_to 'Show', site %></td>
     <td><%= link_to 'Edit', edit_site_path(site) %></td>
-    <td><%= link_to 'Destroy', site, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Destroy', site, confirm: 'All related sectors will be deleted as well. Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>

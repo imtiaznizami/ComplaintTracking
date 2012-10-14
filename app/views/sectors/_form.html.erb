@@ -1,0 +1,93 @@
+<%= nested_form_for(@sector, :html => {:class => "form-horizontal"}) do |f| %>
+  <% if @sector.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sector.errors.count, "error") %> prohibited this sector from being saved:</h2>
+
+      <ul>
+      <% @sector.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="span5">
+      <div class="control-group">
+        <%= f.label :code, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :code %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :cell, :class => "control-label" %>
+        <div class="controls">
+          <%= f.number_field :cell %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :serving_area, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :serving_area %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :morphology, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :morphology %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :bracket_type, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :bracket_type %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :feeder_type, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :feeder_type %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :feeder_length, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :feeder_length %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :blocking, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :blocking %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :site_id, :class => "control-label" %>
+        <div class="controls">
+          <%= collection_select(:sector, :site_id, Site.all, :id, :code, :prompt => 'Please select site') %>
+        </div>
+      </div>
+    </div>
+
+    <div class="span5">
+      <%= f.fields_for :antennas do |builder| %>
+        <%= render "antenna_fields", :f => builder %>
+        <hr />
+      <% end %>
+      <p><%= f.link_to_add "Add an antenna", :antennas %></p>
+
+      <div class="control-group">
+        <%= f.fields_for :comments do |builder| %>
+          <%= render "comment_fields", :f => builder %>
+          <hr />
+        <% end %>
+        <p><%= f.link_to_add "Add a comment", :comments %></p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

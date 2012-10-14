@@ -1,0 +1,43 @@
+<h1>Listing antennas</h1>
+
+<table>
+  <tr>
+    <th>Band</th>
+    <th>Vendor</th>
+    <th>Code</th>
+    <th>Hba</th>
+    <th>Azimuth</th>
+    <th>Mechanical tilt</th>
+    <th>Electrical tilt 900</th>
+    <th>Electrical tilt 1800</th>
+    <th>Electrical tilt 2100</th>
+    <th>Design status</th>
+    <th>Sector</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @antennas.each do |antenna| %>
+  <tr>
+    <td><%= antenna.band %></td>
+    <td><%= antenna.vendor %></td>
+    <td><%= antenna.code %></td>
+    <td><%= antenna.hba %></td>
+    <td><%= antenna.azimuth %></td>
+    <td><%= antenna.mechanical_tilt %></td>
+    <td><%= antenna.electrical_tilt_900 %></td>
+    <td><%= antenna.electrical_tilt_1800 %></td>
+    <td><%= antenna.electrical_tilt_2100 %></td>
+    <td><%= antenna.design_status %></td>
+    <td><%= antenna.sector_id %></td>
+    <td><%= link_to 'Show', antenna %></td>
+    <td><%= link_to 'Edit', edit_antenna_path(antenna) %></td>
+    <td><%= link_to 'Destroy', antenna, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Antenna', new_antenna_path %>

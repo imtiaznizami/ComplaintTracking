@@ -1,5 +1,5 @@
 class Complaint < ActiveRecord::Base
-  has_paper_trail :ignore => [:updated_at, :created_at]
+  #has_paper_trail :ignore => [:updated_at, :created_at]
   has_many :comments, :as => :commentable, :dependent => :destroy
   accepts_nested_attributes_for :comments, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
 

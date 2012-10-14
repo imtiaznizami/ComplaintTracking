@@ -1,0 +1,64 @@
+  <div class="control-group">
+    <%= f.label :band, :class => "control-label" %>
+    <div class="controls">
+      <%= f.select :band, Antenna::BANDS %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :vendor, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :vendor %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :code, :class => "control-label" %>
+    <div class="controls">
+      <%= f.select :code, Antenna::ANTENNA_TYPES %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :hba, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :hba %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :azimuth, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :azimuth %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :mechanical_tilt, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :mechanical_tilt %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :electrical_tilt_900, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :electrical_tilt_900 %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :electrical_tilt_1800, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :electrical_tilt_1800 %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :electrical_tilt_2100, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :electrical_tilt_2100 %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :design_status, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :design_status %>
+    </div>
+  </div>
+
+  <%= f.hidden_field :sector_id, :value => @sector.id %>
+
+<%= f.link_to_remove "remove" %>

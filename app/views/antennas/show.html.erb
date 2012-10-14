@@ -1,0 +1,60 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Band:</b>
+  <%= @antenna.band %>
+</p>
+
+<p>
+  <b>Vendor:</b>
+  <%= @antenna.vendor %>
+</p>
+
+<p>
+  <b>Code:</b>
+  <%= @antenna.code %>
+</p>
+
+<p>
+  <b>Hba:</b>
+  <%= @antenna.hba %>
+</p>
+
+<p>
+  <b>Azimuth:</b>
+  <%= @antenna.azimuth %>
+</p>
+
+<p>
+  <b>Mechanical tilt:</b>
+  <%= @antenna.mechanical_tilt %>
+</p>
+
+<p>
+  <b>Electrical tilt 900:</b>
+  <%= @antenna.electrical_tilt_900 %>
+</p>
+
+<p>
+  <b>Electrical tilt 1800:</b>
+  <%= @antenna.electrical_tilt_1800 %>
+</p>
+
+<p>
+  <b>Electrical tilt 2100:</b>
+  <%= @antenna.electrical_tilt_2100 %>
+</p>
+
+<p>
+  <b>Design status:</b>
+  <%= @antenna.design_status %>
+</p>
+
+<p>
+  <b>Sector:</b>
+  <%= @antenna.sector_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_antenna_path(@antenna) %> |
+<%= link_to 'Back', antennas_path %>

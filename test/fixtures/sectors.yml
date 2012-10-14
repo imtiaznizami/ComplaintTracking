@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  code: MyString
+  cell: 1
+  serving_area: MyString
+  morphology: MyString
+  bracket_type: MyString
+  feeder_type: MyString
+  feeder_length: 9.99
+  blocking: MyString
+  site_id: 1
+
+two:
+  code: MyString
+  cell: 1
+  serving_area: MyString
+  morphology: MyString
+  bracket_type: MyString
+  feeder_type: MyString
+  feeder_length: 9.99
+  blocking: MyString
+  site_id: 1

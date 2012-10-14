@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121009061844) do
+ActiveRecord::Schema.define(:version => 20121012053648) do
 
   create_table "addresses", :force => true do |t|
     t.decimal  "latitude"
@@ -28,6 +28,22 @@ ActiveRecord::Schema.define(:version => 20121009061844) do
     t.integer  "site_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
+  end
+
+  create_table "antennas", :force => true do |t|
+    t.string   "band"
+    t.string   "vendor"
+    t.string   "code"
+    t.decimal  "hba"
+    t.decimal  "azimuth"
+    t.decimal  "mechanical_tilt"
+    t.decimal  "electrical_tilt_900"
+    t.decimal  "electrical_tilt_1800"
+    t.decimal  "electrical_tilt_2100"
+    t.string   "design_status"
+    t.integer  "sector_id"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
   end
 
   create_table "assignments", :force => true do |t|
@@ -90,6 +106,20 @@ ActiveRecord::Schema.define(:version => 20121009061844) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "sectors", :force => true do |t|
+    t.string   "code"
+    t.integer  "cell"
+    t.string   "serving_area"
+    t.string   "morphology"
+    t.string   "bracket_type"
+    t.string   "feeder_type"
+    t.decimal  "feeder_length"
+    t.string   "blocking"
+    t.integer  "site_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+  end
+
   create_table "sites", :force => true do |t|
     t.string   "code"
     t.string   "name"
@@ -122,6 +152,7 @@ ActiveRecord::Schema.define(:version => 20121009061844) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
+    t.boolean  "blocked"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

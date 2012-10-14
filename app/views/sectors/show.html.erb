@@ -1,0 +1,49 @@
+
+<p>
+  <b>Code:</b>
+  <%= @sector.code %>
+</p>
+
+<p>
+  <b>Cell:</b>
+  <%= @sector.cell %>
+</p>
+
+<p>
+  <b>Serving area:</b>
+  <%= @sector.serving_area %>
+</p>
+
+<p>
+  <b>Morphology:</b>
+  <%= @sector.morphology %>
+</p>
+
+<p>
+  <b>Bracket type:</b>
+  <%= @sector.bracket_type %>
+</p>
+
+<p>
+  <b>Feeder type:</b>
+  <%= @sector.feeder_type %>
+</p>
+
+<p>
+  <b>Feeder length:</b>
+  <%= @sector.feeder_length %>
+</p>
+
+<p>
+  <b>Blocking:</b>
+  <%= @sector.blocking %>
+</p>
+
+<p>
+  <b>Site:</b>
+  <%= @sector.site.code %>
+</p>
+
+
+<%= link_to 'Edit', edit_sector_path(@sector) %> |
+<%= link_to 'Back', sectors_path %>

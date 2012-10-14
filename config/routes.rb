@@ -1,4 +1,8 @@
 ComplaintTracker::Application.routes.draw do
+  resources :antennas
+
+  resources :sectors
+
   resources :audits
 
   resources :partners
