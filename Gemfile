@@ -26,6 +26,7 @@ gem 'ransack'
 gem 'will_paginate', '~> 3.0'
 gem 'devise'
 gem 'cancan'
+gem 'therubyracer'
 gem 'paper_trail', '~> 2'
 
 # To use ActiveModel has_secure_password
