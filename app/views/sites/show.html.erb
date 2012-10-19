@@ -1,8 +1,9 @@
 <div class="row show-grid">
-  <div class="span3">
-    <h4> Specifications </h4>
+
+  <div class="span4">
     <!-- Site attributes
     ================================================== -->
+    <h4> Specifications </h4>
     <% @site.attributes.reject { |k, v| ["id", "created_at", "updated_at"].include?(k) }.each_pair do |name, value| %>
       <p>
         <b><%= name.humanize %>:</b>
@@ -12,9 +13,9 @@
   </div>
   
   <div class="span3">
-    <h4> Address Fields </h4>
     <!-- Site address attributes
     ================================================== -->
+    <h4> Address Fields </h4>
     <% @site.address.attributes.reject { |k, v| ["id", "created_at", "updated_at", "site_id"].include?(k) }.each_pair do |name, value| %>
       <p>
         <b><%= name.humanize %>:</b>
@@ -23,10 +24,10 @@
     <% end %>
   </div>
   
-  <div class="span4">
-    <h4> Partner Fields </h4>
+  <div class="span3">
     <!-- Site partner attributes
     ================================================== -->
+    <h4> Partner Fields </h4>
     <% @site.partner.attributes.reject { |k, v| ["id", "created_at", "updated_at", "site_id"].include?(k) }.each_pair do |name, value| %>
       <p>
         <b><%= name.humanize %>:</b>
@@ -34,17 +35,28 @@
       </p>
     <% end %>
     
-    <hr />
-    <h4> Audit Fields </h4>
     <!-- Site audit attributes
     ================================================== -->
+    <hr />
+    <h4> Audit Fields </h4>
     <% @site.audit.attributes.reject { |k, v| ["id", "created_at", "updated_at", "site_id"].include?(k) }.each_pair do |name, value| %>
       <p>
         <b><%= name.humanize %>:</b>
         <%= value %>
       </p>
     <% end %>
-    </div>
+    
+    <!-- Site sectors
+    ================================================== -->
+    <hr />
+    <h4> Sectors </h4>
+    <ul>
+      <% @site.sectors.each do |sector| %>
+        <li> <%= link_to sector.code, sector_path(sector) %> </li>
+      <% end %>
+    </ul>
+
+  </div>
 </div>
 
 <%= link_to 'Edit', edit_site_path(@site) %> |

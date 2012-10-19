@@ -13,7 +13,7 @@ class SectorsController < ApplicationController
   # GET /sectors/1
   # GET /sectors/1.json
   def show
-    @sector = Sector.find(params[:id])
+    @sector = Sector.includes(:antennas).find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
