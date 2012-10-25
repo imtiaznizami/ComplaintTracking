@@ -1,6 +1,18 @@
 require 'csv'
+require 'fileutils'
 
 namespace :complaints do
+
+  desc "Copy new complaints from shared folder and add them to database"
+  task :copy_and_add => [:copy, :add]
+
+  desc "Copy new complaints from shared folder"
+  task :copy => :environment do
+    source_path = "/home/vagrant/vshared/new_complaints/"
+    destination_path = "#{Rails.root}/public/new_complaints/"
+    file_name = "#{Time.now.strftime("%Y%m%d")}.csv"
+    FileUtils.cp "#{source_path}#{file_name}", "#{destination_path}"
+  end
 
   desc "Add new complaints to database"
   task :add => :environment do
