@@ -12,12 +12,8 @@
 
 # Ignore all logfiles and tempfiles.
 /log/*.log
-/tmp
-
-# Imtiaz's ignores
-*~
-*swp
-*.bak
-*.lock
 /public/new_complaints/*
-~$*
+/tmp
+*~
+*.swp
+*.swo
