@@ -1,0 +1,37 @@
+<h1>Listing proposals</h1>
+
+<table>
+  <tr>
+    <th>Hba</th>
+    <th>Azimuth</th>
+    <th>Mechanical tilt</th>
+    <th>Electrical tilt 900</th>
+    <th>Electrical tilt 1800</th>
+    <th>Electrical tilt 2100</th>
+    <th>Design status</th>
+    <th>Antenna</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @proposals.each do |proposal| %>
+  <tr>
+    <td><%= proposal.hba %></td>
+    <td><%= proposal.azimuth %></td>
+    <td><%= proposal.mechanical_tilt %></td>
+    <td><%= proposal.electrical_tilt_900 %></td>
+    <td><%= proposal.electrical_tilt_1800 %></td>
+    <td><%= proposal.electrical_tilt_2100 %></td>
+    <td><%= proposal.design_status %></td>
+    <td><%= proposal.antenna_id %></td>
+    <td><%= link_to 'Show', proposal %></td>
+    <td><%= link_to 'Edit', edit_proposal_path(proposal) %></td>
+    <td><%= link_to 'Destroy', proposal, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Proposal', new_proposal_path %>

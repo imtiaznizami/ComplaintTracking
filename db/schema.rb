@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121012053648) do
+ActiveRecord::Schema.define(:version => 20121129045353) do
 
   create_table "addresses", :force => true do |t|
     t.decimal  "latitude"
@@ -98,6 +98,19 @@ ActiveRecord::Schema.define(:version => 20121012053648) do
     t.integer  "site_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "proposals", :force => true do |t|
+    t.decimal  "hba"
+    t.decimal  "azimuth"
+    t.decimal  "mechanical_tilt"
+    t.decimal  "electrical_tilt_900"
+    t.decimal  "electrical_tilt_1800"
+    t.decimal  "electrical_tilt_2100"
+    t.string   "design_status"
+    t.integer  "antenna_id"
+    t.datetime "created_at",           :null => false
+    t.datetime "updated_at",           :null => false
   end
 
   create_table "roles", :force => true do |t|

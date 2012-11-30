@@ -12,6 +12,7 @@ class Antenna < ActiveRecord::Base
 
   # Relations
   belongs_to :sector
+  has_many :proposals
   #has_paper_trail :ignore => [:updated_at, :created_at]
 
 

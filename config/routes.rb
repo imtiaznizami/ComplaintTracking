@@ -1,7 +1,12 @@
 ComplaintTracker::Application.routes.draw do
+  resources :proposals
+
   resources :antennas
 
-  resources :sectors
+  resources :sectors do
+    get :propose, :on => :member
+    get :submit_proposal, :on => :member
+  end
 
   resources :audits
 

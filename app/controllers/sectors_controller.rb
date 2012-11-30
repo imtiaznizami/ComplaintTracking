@@ -37,6 +37,53 @@ class SectorsController < ApplicationController
     @sector = Sector.find(params[:id])
   end
 
+  def propose
+    @sector = Sector.find(params[:id])
+  end
+
+  def delme
+    @sector = Sector.find(params[:id])
+
+    @sector.assign_attributes(params[:sector])
+    if params[:proposed]
+      @sector.antennas.each do |antenna|
+        antenna.design_status = "proposed" if antenna.changed?
+      end
+    end
+
+    respond_to do |format|
+      if @sector.save
+        format.html { redirect_to @sector, notice: 'Sector was successfully updated.' }
+        format.json { head :no_content }
+      else
+        if params[:proposed]
+          format.html { render action: "propose" }
+        else
+          format.html { render action: "edit" }
+        end
+        format.json { render json: @sector.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def submit_proposal
+    # sector is for validation only
+    # we don't want to update antenna
+    # if validation pass create corresponding proposal(s)
+    @sector = Sector.find(params[:id])
+    @sector.assign_attributes(params[:sector])
+
+    respond_to do |format|
+      if @sector.valid?
+        format.html { redirect_to @sector, notice: 'Antenna parameters were successfully proposed.' }
+        format.json { head :no_content }
+      else
+        format.html { render action: "propose" }
+        format.json { render json: @sector.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
   # POST /sectors
   # POST /sectors.json
   def create

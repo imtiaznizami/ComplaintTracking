@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Hba:</b>
+  <%= @proposal.hba %>
+</p>
+
+<p>
+  <b>Azimuth:</b>
+  <%= @proposal.azimuth %>
+</p>
+
+<p>
+  <b>Mechanical tilt:</b>
+  <%= @proposal.mechanical_tilt %>
+</p>
+
+<p>
+  <b>Electrical tilt 900:</b>
+  <%= @proposal.electrical_tilt_900 %>
+</p>
+
+<p>
+  <b>Electrical tilt 1800:</b>
+  <%= @proposal.electrical_tilt_1800 %>
+</p>
+
+<p>
+  <b>Electrical tilt 2100:</b>
+  <%= @proposal.electrical_tilt_2100 %>
+</p>
+
+<p>
+  <b>Design status:</b>
+  <%= @proposal.design_status %>
+</p>
+
+<p>
+  <b>Antenna:</b>
+  <%= @proposal.antenna_id %>
+</p>
+
+
+<%= link_to 'Edit', edit_proposal_path(@proposal) %> |
+<%= link_to 'Back', proposals_path %>

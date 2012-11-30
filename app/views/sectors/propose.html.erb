@@ -1,0 +1,101 @@
+<h1>Propose antenna parameters</h1>
+
+<%= nested_form_for(@sector, :url => {:action => :submit_proposal}, :html => {:class => "form-horizontal"}) do |f| %>
+<%#= nested_form_for(@sector, :html => {:class => "form-horizontal"}) do |f| %>
+  <% if @sector.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@sector.errors.count, "error") %> prohibited this sector from being saved:</h2>
+
+      <ul>
+      <% @sector.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%#= hidden_field_tag "params[:proposed]", true, :id => "proposed" %>
+  <div class="row">
+    <div class="span5">
+      <div class="control-group">
+        <%= f.label :code, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :code, :disabled => true %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :cell, :class => "control-label" %>
+        <div class="controls">
+          <%= f.number_field :cell, :disabled => true %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :serving_area, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :serving_area, :disabled => true %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :morphology, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :morphology, :disabled => true %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :bracket_type, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :bracket_type, :disabled => true %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :feeder_type, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :feeder_type, :disabled => true %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :feeder_length, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :feeder_length, :disabled => true %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :blocking, :class => "control-label" %>
+        <div class="controls">
+          <%= f.text_field :blocking, :disabled => true %>
+        </div>
+      </div>
+      <div class="control-group">
+        <%= f.label :site_id, :class => "control-label" %>
+        <div class="controls">
+          <%= text_field_tag :site_id, @sector.site.code, :disabled => true %>
+        </div>
+      </div>
+    </div>
+
+    <div class="span5">
+      <%= f.fields_for :antennas do |builder| %>
+        <%= render "propose_antenna_fields", :f => builder %>
+        <hr />
+      <% end %>
+      <p><%= f.link_to_add "Add an antenna", :antennas %></p>
+
+      <div class="control-group">
+        <%= f.fields_for :comments do |builder| %>
+          <%= render "comment_fields", :f => builder %>
+          <hr />
+        <% end %>
+        <p><%= f.link_to_add "Add a comment", :comments %></p>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit "Propose" %>
+  </div>
+<% end %>
+
+
+<%= link_to 'Show', @sector %> |
+<%= link_to 'Back', sectors_path %>

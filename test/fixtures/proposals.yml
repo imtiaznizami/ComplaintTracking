@@ -1,0 +1,21 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  hba: 9.99
+  azimuth: 9.99
+  mechanical_tilt: 9.99
+  electrical_tilt_900: 9.99
+  electrical_tilt_1800: 9.99
+  electrical_tilt_2100: 9.99
+  design_status: MyString
+  antenna_id: 
+
+two:
+  hba: 9.99
+  azimuth: 9.99
+  mechanical_tilt: 9.99
+  electrical_tilt_900: 9.99
+  electrical_tilt_1800: 9.99
+  electrical_tilt_2100: 9.99
+  design_status: MyString
+  antenna_id: 

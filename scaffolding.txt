@@ -39,3 +39,5 @@ rails g scaffold Sector code:string cell:integer serving_area:string morphology:
 
 
 rails g scaffold antenna band:string vendor:string code:string hba:decimal azimuth:decimal mechanical_tilt:decimal electrical_tilt_900:decimal electrical_tilt_1800:decimal electrical_tilt_2100:decimal design_status:string sector_id:integer 
+
+rails g scaffold proposal hba:decimal azimuth:decimal mechanical_tilt:decimal electrical_tilt_900:decimal electrical_tilt_1800:decimal electrical_tilt_2100:decimal design_status:string antenna_id:integer
