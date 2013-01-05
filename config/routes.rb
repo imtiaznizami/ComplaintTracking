@@ -1,11 +1,13 @@
 ComplaintTracker::Application.routes.draw do
-  resources :proposals
+  resources :proposals do
+    get :commit, :on => :member
+  end
 
   resources :antennas
 
   resources :sectors do
     get :propose, :on => :member
-    get :submit_proposal, :on => :member
+    put :submit_proposal, :on => :member
   end
 
   resources :audits

@@ -1,4 +1,6 @@
 class SectorsController < ApplicationController
+  load_and_authorize_resource :except => [:propose, :submit_proposal]
+
   # GET /sectors
   # GET /sectors.json
   def index
@@ -39,6 +41,7 @@ class SectorsController < ApplicationController
 
   def propose
     @sector = Sector.find(params[:id])
+    authorize! :propose, @sector
   end
 
   def delme
@@ -73,8 +76,26 @@ class SectorsController < ApplicationController
     @sector = Sector.find(params[:id])
     @sector.assign_attributes(params[:sector])
 
+    #TODO: make this proper / currently errors are not being caught correctly.
+    #TODO: propose only if we do not already have a proposal for this antenna.
     respond_to do |format|
       if @sector.valid?
+        # create proposals if values changed
+        @sector.antennas.each do |antenna|
+          if antenna.changed? #&& 0 == antenna.proposals.length
+            proposal = Proposal.new
+            proposal.antenna_id = antenna.id
+            proposal.hba = antenna.hba
+            proposal.azimuth = antenna.azimuth
+            proposal.mechanical_tilt = antenna.mechanical_tilt
+            proposal.electrical_tilt_900 = antenna.electrical_tilt_900
+            proposal.electrical_tilt_1800 = antenna.electrical_tilt_1800
+            proposal.electrical_tilt_2100 = antenna.electrical_tilt_2100
+            proposal.design_status = "proposed"
+            proposal.proposed_by = current_user
+            proposal.save!
+          end
+        end
         format.html { redirect_to @sector, notice: 'Antenna parameters were successfully proposed.' }
         format.json { head :no_content }
       else
@@ -82,6 +103,7 @@ class SectorsController < ApplicationController
         format.json { render json: @sector.errors, status: :unprocessable_entity }
       end
     end
+    authorize! :propose, @sector
   end
 
   # POST /sectors

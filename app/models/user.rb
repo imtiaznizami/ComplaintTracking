@@ -19,5 +19,9 @@ class User < ActiveRecord::Base
   def active_for_authentication?
     super && !self.blocked
   end
+
+  def user_name
+    email.split('@')[0]
+  end
   
 end

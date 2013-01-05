@@ -15,6 +15,8 @@ class Antenna < ActiveRecord::Base
   has_many :proposals
   #has_paper_trail :ignore => [:updated_at, :created_at]
 
+  accepts_nested_attributes_for :proposals, :reject_if => :all_blank, :allow_destroy => true
+
 
   # Custom methods
   def count_within_limit
@@ -27,7 +29,7 @@ class Antenna < ActiveRecord::Base
     unless ( ( band == "900" && (electrical_tilt_1800.blank? && electrical_tilt_2100.blank?) ) ||
              ( band == "1800" && (electrical_tilt_900.blank? && electrical_tilt_2100.blank?) ) ||
              ( band == "Dual" && (electrical_tilt_2100.blank?) ) )
-      errors.add(:base, "Error: Electrical tilt entered is for the wrong band.")
+      errors.add(:base, "Error: Electrical tilt entered is for the wrong band.#{code}")
     end
   end
 

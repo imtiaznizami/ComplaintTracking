@@ -1,4 +1,4 @@
-  <div class="control-group">
+<div class="control-group">
     <%= f.label :band, :class => "control-label" %>
     <div class="controls">
       <%= f.number_field :band, :disabled => true %>
@@ -60,5 +60,3 @@
   </div>
 
   <%= f.hidden_field :sector_id, :value => @sector.id %>
-
-<%= f.link_to_remove "remove" %>

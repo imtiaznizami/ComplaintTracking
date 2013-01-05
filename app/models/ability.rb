@@ -7,18 +7,24 @@ class Ability
     if user.role? :admin
       can :manage, :all
     elsif user.role? :delete_coordinator
-      can :read, [Complaint]
+      can :read, [Site, Address, Partner, Audit, Sector, Antenna, Comment, Complaint]
       can :manage, [Site, Address, Partner, Audit, Sector, Antenna, Comment]
     elsif user.role? :edit_coordinator
       can :read, [Site, Address, Partner, Audit, Sector, Antenna, Comment, Complaint]
       can :update, [Site, Address, Partner, Audit, Sector, Antenna, Comment]
       can :create, [Site, Address, Partner, Audit, Sector, Antenna, Comment]
     elsif user.role? :proposal_coordinator
-      can :read, [Site, Address, Partner, Audit, Sector, Antenna, Comment, Complaint]
-      can :update, [Antenna]
+      can :read, [Site, Address, Partner, Audit, Sector, Antenna, Comment, Complaint, Proposal]
+      can :update, [Proposal]
+      can :commit, [Proposal]
+      can :destroy, [Proposal]
     elsif user.role? :complaint_coordinator
-      can :read, [Complaint, Comment]
+      can :read, [Site, Address, Partner, Audit, Sector, Antenna, Comment, Complaint]
       can :update, [Complaint, Comment]
+    elsif user.role? :normal_user
+      can :read, [Site, Address, Partner, Audit, Sector, Antenna, Comment, Complaint]
+      can :create, [Proposal]
+      can :propose, [Sector]
     else
       can :read, [Site, Address, Partner, Audit, Sector, Antenna, Comment, Complaint]
     end

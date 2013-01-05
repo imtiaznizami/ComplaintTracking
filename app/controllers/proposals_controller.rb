@@ -1,8 +1,11 @@
 class ProposalsController < ApplicationController
+  #TODO: localhost:3000/proposals should not result in RedirectBackError when no user is logged in
+  load_and_authorize_resource :except => :commit
+
   # GET /proposals
   # GET /proposals.json
   def index
-    @proposals = Proposal.all
+    @proposals = Proposal.where(:design_status => "proposed")
 
     respond_to do |format|
       format.html # index.html.erb
@@ -67,6 +70,36 @@ class ProposalsController < ApplicationController
         format.json { render json: @proposal.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def commit
+    @proposal = Proposal.find(params[:id])
+
+    antenna = Antenna.find(@proposal.antenna)
+    antenna.attributes = {
+      :hba => @proposal.hba,
+      :azimuth => @proposal.azimuth,
+      :mechanical_tilt => @proposal.mechanical_tilt,
+      :electrical_tilt_900 => @proposal.electrical_tilt_900,
+      :electrical_tilt_1800 => @proposal.electrical_tilt_1800,
+      :electrical_tilt_2100 => @proposal.electrical_tilt_2100,
+
+      :proposals_attributes => [
+        { :id => @proposal.id, :committed_by => current_user, :design_status => "committed" }
+      ]
+    }
+
+    respond_to do |format|
+      if antenna.save
+        #format.html { redirect_to @proposal, notice: 'Proposal was successfully updated.' }
+        format.html { redirect_to :proposals, :notice => 'Proposal was successfully committed.' }
+        format.json { head :no_content }
+      else
+        format.html { redirect_to :proposals }
+        format.json { render json: @proposal.errors, status: :unprocessable_entity }
+      end
+    end
+    authorize! :commit, @proposal
   end
 
   # DELETE /proposals/1

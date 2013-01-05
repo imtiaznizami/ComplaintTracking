@@ -1,15 +1,16 @@
 <h1>Listing proposals</h1>
 
-<table>
+<table class="table table-striped table-bordered table-condensed">
   <tr>
+    <th>Sector</th>
+    <th>Band</th>
+    <th>Proposed by</th>
+    <th>Proposed at</th>
     <th>Hba</th>
     <th>Azimuth</th>
-    <th>Mechanical tilt</th>
-    <th>Electrical tilt 900</th>
-    <th>Electrical tilt 1800</th>
-    <th>Electrical tilt 2100</th>
-    <th>Design status</th>
-    <th>Antenna</th>
+    <th>M. Tilt</th>
+    <th>E. Tilt 900</th>
+    <th>E. Tilt 1800</th>
     <th></th>
     <th></th>
     <th></th>
@@ -17,21 +18,22 @@
 
 <% @proposals.each do |proposal| %>
   <tr>
-    <td><%= proposal.hba %></td>
-    <td><%= proposal.azimuth %></td>
-    <td><%= proposal.mechanical_tilt %></td>
-    <td><%= proposal.electrical_tilt_900 %></td>
-    <td><%= proposal.electrical_tilt_1800 %></td>
-    <td><%= proposal.electrical_tilt_2100 %></td>
-    <td><%= proposal.design_status %></td>
-    <td><%= proposal.antenna_id %></td>
-    <td><%= link_to 'Show', proposal %></td>
+    <td><%= proposal.antenna.sector.code %></td>
+    <td><%= proposal.antenna.band %></td>
+    <td><%= User.find(proposal.proposed_by).user_name %></td>
+    <td><%= proposal.created_at.to_date %></td>
+
+    <td><%= "#{proposal.antenna.hba.to_int} > #{proposal.hba.to_int}" unless proposal.hba.nil? %></td>
+    <td><%= "#{proposal.antenna.azimuth.to_int} > #{proposal.azimuth.to_int}" unless proposal.azimuth.nil? %></td>
+    <td><%= "#{proposal.antenna.mechanical_tilt.to_int} > #{proposal.mechanical_tilt.to_int}" unless proposal.mechanical_tilt.nil? %></td>
+    <td><%= "#{proposal.antenna.electrical_tilt_900.to_int} > #{proposal.electrical_tilt_900.to_int}" unless proposal.electrical_tilt_900.nil? %></td>
+    <td><%= "#{proposal.antenna.electrical_tilt_1800.to_int} > #{proposal.electrical_tilt_1800.to_int}" unless proposal.electrical_tilt_1800.nil? %></td>
+
+    <td><%= link_to 'Commit', commit_proposal_path(proposal) %></td>
     <td><%= link_to 'Edit', edit_proposal_path(proposal) %></td>
-    <td><%= link_to 'Destroy', proposal, confirm: 'Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Reject', proposal, confirm: 'Are you sure?', method: :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
-
-<%= link_to 'New Proposal', new_proposal_path %>
