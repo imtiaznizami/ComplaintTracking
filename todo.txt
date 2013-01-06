@@ -1,6 +1,5 @@
 
 
-- previous redesigns visible for each sector
 - populate database
 - make apache serve requests
 - switch to production mode
@@ -21,3 +20,4 @@ Later
 Completed
 =========
 - signup option invisible
+- previous redesigns visible for each sector
