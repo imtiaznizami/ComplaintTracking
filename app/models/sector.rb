@@ -12,8 +12,13 @@ class Sector < ActiveRecord::Base
   belongs_to :site
   has_many :antennas, :dependent => :destroy
   has_many :comments, :as => :commentable, :dependent => :destroy
+  has_many :proposals, :through => :antennas
   #has_paper_trail :ignore => [:updated_at, :created_at]
 
   accepts_nested_attributes_for :antennas, :reject_if => :all_blank, :allow_destroy => true
   accepts_nested_attributes_for :comments, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
+
+  def redesigns
+    
+  end
 end

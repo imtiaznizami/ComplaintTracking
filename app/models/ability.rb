@@ -10,7 +10,6 @@ class Ability
       can :read, [Site, Address, Partner, Audit, Sector, Antenna, Comment, Complaint]
       can :manage, [Site, Address, Partner, Audit, Sector, Antenna, Comment]
     elsif user.role? :edit_coordinator
-      #can :manage, :all
       can :read, [Site, Address, Partner, Audit, Sector, Antenna, Comment, Complaint]
       can :update, [Site, Address, Partner, Audit, Sector, Antenna, Comment]
       can :create, [Site, Address, Partner, Audit, Sector, Antenna, Comment]

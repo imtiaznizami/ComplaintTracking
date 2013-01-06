@@ -42,3 +42,56 @@
   <%= link_to 'Edit', edit_sector_path(@sector) %> |
 <% end %>
 <%= link_to 'Back', sectors_path %>
+
+
+<!-- Sector comments
+================================================== -->
+<p>
+  <hr />
+  <h4>Comments</h4>
+  <% for comment in @sector.comments %>
+    <%= simple_format(comment.content) %>
+    <hr />
+  <% end %>
+</p>
+
+<!-- Redesigns
+================================================== -->
+<!-- TODO: Refactor to move this code in another file and logic to the model -->
+<p>
+  <hr />
+  <h4>Redesigns</h4>
+  <table class="table table-striped table-bordered table-condensed">
+    <tr>
+      <th>Band</th>
+      <th>Hba</th>
+      <th>Azimuth</th>
+      <th>M. Tilt</th>
+      <th>E. Tilt 900</th>
+      <th>E. Tilt 1800</th>
+      <th>Proposed by</th>
+      <th>Proposed at</th>
+      <th>Committed by</th>
+      <th>Committed at</th>
+      <th>Design Status</th>
+    </tr>
+
+    <% for proposal in @sector.proposals.reverse %>
+      <tr>
+        <td><%= proposal.antenna.band %></td>
+        <td><%= proposal.hba %></td>
+        <td><%= proposal.azimuth %></td>
+        <td><%= proposal.mechanical_tilt %></td>
+        <td><%= proposal.electrical_tilt_900 %></td>
+        <td><%= proposal.electrical_tilt_1800 %></td>
+        <td><%= User.find(proposal.proposed_by).user_name unless proposal.proposed_by.nil? %></td>
+        <td><%= proposal.proposed_at.to_date unless proposal.proposed_at.nil? %></td>
+        <td><%= User.find(proposal.committed_by).user_name unless proposal.committed_by.nil? %></td>
+        <td><%= proposal.committed_at.to_date unless proposal.committed_at.nil? %></td>
+        <td><%= proposal.design_status %></td>
+
+      </tr>
+    <% end %>
+  </table>
+  </p>
+

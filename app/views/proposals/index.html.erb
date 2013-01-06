@@ -21,7 +21,7 @@
     <td><%= proposal.antenna.sector.code %></td>
     <td><%= proposal.antenna.band %></td>
     <td><%= User.find(proposal.proposed_by).user_name %></td>
-    <td><%= proposal.created_at.to_date %></td>
+    <td><%= proposal.proposed_at.to_date %></td>
 
     <td><%= "#{proposal.antenna.hba.to_int} > #{proposal.hba.to_int}" unless proposal.hba.nil? %></td>
     <td><%= "#{proposal.antenna.azimuth.to_int} > #{proposal.azimuth.to_int}" unless proposal.azimuth.nil? %></td>

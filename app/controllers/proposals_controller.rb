@@ -85,7 +85,7 @@ class ProposalsController < ApplicationController
       :electrical_tilt_2100 => @proposal.electrical_tilt_2100,
 
       :proposals_attributes => [
-        { :id => @proposal.id, :committed_by => current_user, :design_status => "committed" }
+        { :id => @proposal.id, :committed_by => current_user.id, :committed_at => Time.now,  :design_status => "committed" }
       ]
     }
 

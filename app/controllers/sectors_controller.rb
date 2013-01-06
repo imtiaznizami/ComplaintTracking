@@ -74,6 +74,7 @@ class SectorsController < ApplicationController
     # we don't want to update antenna
     # if validation pass create corresponding proposal(s)
     @sector = Sector.find(params[:id])
+
     @sector.assign_attributes(params[:sector])
 
     #TODO: make this proper / currently errors are not being caught correctly.
@@ -92,7 +93,8 @@ class SectorsController < ApplicationController
             proposal.electrical_tilt_1800 = antenna.electrical_tilt_1800
             proposal.electrical_tilt_2100 = antenna.electrical_tilt_2100
             proposal.design_status = "proposed"
-            proposal.proposed_by = current_user
+            proposal.proposed_by = current_user.id
+            proposal.proposed_at = Time.now
             proposal.save!
           end
         end
@@ -111,6 +113,25 @@ class SectorsController < ApplicationController
   def create
     @sector = Sector.new(params[:sector])
 
+    # Code to add an initial proposal to track initial antenna configuration.
+    @sector.antennas.each do |antenna|
+      if antenna.proposals.empty?
+        proposal = antenna.proposals.build
+        proposal.antenna_id = antenna.id
+        proposal.hba = antenna.hba
+        proposal.azimuth = antenna.azimuth
+        proposal.mechanical_tilt = antenna.mechanical_tilt
+        proposal.electrical_tilt_900 = antenna.electrical_tilt_900
+        proposal.electrical_tilt_1800 = antenna.electrical_tilt_1800
+        proposal.electrical_tilt_2100 = antenna.electrical_tilt_2100
+        proposal.design_status = "initial"
+        proposal.proposed_by = current_user.id
+        proposal.proposed_at = Time.now
+        proposal.committed_by = current_user.id
+        proposal.committed_at = Time.now
+      end
+    end
+
     respond_to do |format|
       if @sector.save
         format.html { redirect_to @sector, notice: 'Sector was successfully created.' }
@@ -126,9 +147,29 @@ class SectorsController < ApplicationController
   # PUT /sectors/1.json
   def update
     @sector = Sector.find(params[:id])
+    @sector.assign_attributes(params[:sector])
+
+    # Code to add an initial proposal to track initial antenna configuration.
+    @sector.antennas.each do |antenna|
+      if antenna.proposals.empty?
+        proposal = antenna.proposals.build
+        proposal.antenna_id = antenna.id
+        proposal.hba = antenna.hba
+        proposal.azimuth = antenna.azimuth
+        proposal.mechanical_tilt = antenna.mechanical_tilt
+        proposal.electrical_tilt_900 = antenna.electrical_tilt_900
+        proposal.electrical_tilt_1800 = antenna.electrical_tilt_1800
+        proposal.electrical_tilt_2100 = antenna.electrical_tilt_2100
+        proposal.design_status = "initial"
+        proposal.proposed_by = current_user.id
+        proposal.proposed_at = Time.now
+        proposal.committed_by = current_user.id
+        proposal.committed_at = Time.now
+      end
+    end
 
     respond_to do |format|
-      if @sector.update_attributes(params[:sector])
+      if @sector.save
         format.html { redirect_to @sector, notice: 'Sector was successfully updated.' }
         format.json { head :no_content }
       else
