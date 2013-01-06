@@ -4,7 +4,8 @@ class Antenna < ActiveRecord::Base
   #validate :count_within_limit
   validate :correct_band_populated
   validate :correct_antenna_band_and_tilts
-  validates_presence_of :sector_id
+  # Following line is commented out to create antenna along with sector creation
+  #validates_presence_of :sector_id
   validates_numericality_of :azimuth, :greater_than_or_equal_to => 0, :less_than_or_equal_to => 360, :allow_nil => true
   validates_numericality_of :hba, :greater_than_or_equal_to => 0, :less_than_or_equal_to => 100, :allow_nil => true
   validates_numericality_of :mechanical_tilt, :greater_than_or_equal_to => -14, :less_than_or_equal_to => 100, :allow_nil => true
