@@ -35,6 +35,10 @@
 
 </div>
 
+<% if can? :propose, Sector %>
 <%= link_to 'Propose', propose_sector_path(@sector) %> |
-<%= link_to 'Edit', edit_sector_path(@sector) %> |
+<% end %>
+<% if can? :update, Sector %>
+  <%= link_to 'Edit', edit_sector_path(@sector) %> |
+<% end %>
 <%= link_to 'Back', sectors_path %>

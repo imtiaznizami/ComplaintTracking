@@ -1,4 +1,6 @@
 class SitesController < ApplicationController
+  load_and_authorize_resource
+
   # GET /sites
   # GET /sites.json
   def index

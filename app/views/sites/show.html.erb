@@ -59,7 +59,9 @@
   </div>
 </div>
 
-<%= link_to 'Edit', edit_site_path(@site) %> |
+<% if can? :update, Site %>
+  <%= link_to 'Edit', edit_site_path(@site) %> |
+<% end %>
 <%= link_to 'Back', sites_path %>
 
 <!-- Site comments

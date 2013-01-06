@@ -21,29 +21,31 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-    
+
     <%= yield(:head) %>
   </head>
 
   <body>
-  
+
     <!-- Navbar
     ================================================== -->
-  	<div class="navbar navbar-inverse navbar-fixed-top">
-  		<div class="navbar-inner">
-    		<div class="container">
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-    			<a class="brand" href="#">ComplaintTracker</a>
-    			<div class="nav-collapse collapse">
-      			<ul class="nav">
-      				<li class="active"><a href="#">All Complaints</a></li>
-      				<li><a href="#">Open Complaints</a></li>
-      				<li><a href="#">My Open Complaints</a></li>
-      			</ul>
+          <a class="brand" href="#">ComplaintTracker</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><%= link_to "Sites", sites_path %></li>
+              <li><%= link_to "Sectors", sectors_path %></li>
+              <% if can? :update, Proposal %>
+                <li><%= link_to "Proposals", proposals_path %></li>
+              <% end %>
+            </ul>
 
             <ul class="nav pull-right">
               <% if user_signed_in? %>
@@ -60,9 +62,9 @@
               <% end %>
             </ul>
           </div><!--/.nav-collapse -->
-    		</div>
-  		</div>
-  	</div>
+        </div>
+      </div>
+    </div>
 
     <!-- Main Page
     ================================================== -->

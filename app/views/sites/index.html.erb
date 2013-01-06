@@ -20,12 +20,12 @@
     <td><%= site.partner.status %></td>
     <td><%= site.partner.operator %></td>
     <td><%= link_to 'Show', site %></td>
-    <td><%= link_to 'Edit', edit_site_path(site) %></td>
-    <td><%= link_to 'Destroy', site, confirm: 'All related sectors will be deleted as well. Are you sure?', method: :delete %></td>
+    <td><%= link_to 'Edit', edit_site_path(site) if can? :update, Site %></td>
+    <td><%= link_to 'Destroy', site, confirm: 'All related sectors will be deleted as well. Are you sure?', method: :delete if can? :destroy, Site %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New Site', new_site_path %>
+<%= link_to 'New Site', new_site_path if can? :create, Site %>
