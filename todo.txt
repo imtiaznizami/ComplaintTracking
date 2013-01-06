@@ -1,0 +1,8 @@
+- populate database
+- make apache serve requests
+- switch to production mode
+- add survey tracker functionality
+- add google earth server
+- add service manager's javascripts
+- make user roles selectable by a dashboard via checkboxes
+- signup option invisible
