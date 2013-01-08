@@ -1,0 +1,20 @@
+
+
+<%= form_for @site_import do |f| %>
+  <% if @site_import.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@site_import.errors.count, "error") %> prohibited this import from completing:</h2>
+      <ul>
+        <% @site_import.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="filed">
+    <%= f.file_field :file %>
+  </div>
+  <div class="buttons"><%= f.submit "Import" %></div>
+
+<% end %>

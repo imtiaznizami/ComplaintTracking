@@ -18,6 +18,8 @@ ComplaintTracker::Application.routes.draw do
 
   resources :sites
 
+  resources :site_imports
+
   devise_for :users
   # devise_for :users do get '/users/sign_out' => 'devise/sessions#destroy' end
 
