@@ -4,7 +4,7 @@ class SitesController < ApplicationController
   # GET /sites
   # GET /sites.json
   def index
-    @sites = Site.all
+    @sites = Site.paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

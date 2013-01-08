@@ -4,7 +4,7 @@ class SectorsController < ApplicationController
   # GET /sectors
   # GET /sectors.json
   def index
-    @sectors = Sector.all
+    @sectors = Sector.paginate(:page => params[:page])
 
     respond_to do |format|
       format.html # index.html.erb

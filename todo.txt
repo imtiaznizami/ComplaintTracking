@@ -1,8 +1,13 @@
 
+- site audit fields: ask Sameer if they are of any importance
+- add line, area_name and city directly from sqlite database as they have commas
 
 - populate database
 - make apache serve requests
 - switch to production mode
+- backup db before each upload
+- save csv file being uploaded
+- pagination on sites
 
 Later
 =====

@@ -37,13 +37,29 @@ class SiteImport
     arr = Array.new
     CSV.foreach(file.path, headers: true) do |row|
       site = Site.find_by_id(row["id"]) || Site.new
-      site.build_address if site.address.nil?
-      site.build_partner if site.partner.nil?
-      site.build_audit if site.audit.nil?
 
-      site.attributes = row.to_hash.slice(*Site.accessible_attributes)
+      sector_attributes = row.to_hash.dup.inject({}) do |result, (k, v)|
+        result[k.gsub(/^sector_/,'')] = v if k.start_with?('sector_')
+        result
+      end
+
+      #if Sector.find_by_id(row["sector_id"]).nil?
+      if Sector.find_by_id(sector_attributes["id"]).nil?
+        site.sectors.build(sector_attributes)
+      else
+        #site.sectors.where("id = ?", sector_id).first.attributes = sector_attributes
+        site.sectors.each do |s|
+          s.attributes = sector_attributes if s.id == Integer(sector_attributes["id"])
+        end
+      end
 
 
+###      site.build_address if site.address.nil?
+###      site.build_partner if site.partner.nil?
+###      site.build_audit if site.audit.nil?
+###
+###      site.attributes = row.to_hash.slice(*Site.accessible_attributes)
+###
 ###      #site.partner.attributes = row.to_hash.slice(*Address.accessible_attributes)
 ###      site.address.attributes = row.to_hash.dup.inject({}) do |result, (k, v)|
 ###        result[k.gsub(/^address_/,'')] = v if k.start_with?('address_')
