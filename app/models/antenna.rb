@@ -1,11 +1,15 @@
 class Antenna < ActiveRecord::Base
+  attr_accessible :band, :vendor, :code, :hba, :azimuth, :mechanical_tilt,
+    :electrical_tilt_900, :electrical_tilt_1800, :electrical_tilt_2100,
+    :design_status, :sector_id, :id
 
   # Validations
   #validate :count_within_limit
   validate :correct_band_populated
   validate :correct_antenna_band_and_tilts
-  # Following line is commented out to create antenna along with sector creation
+  # Following line is commented out to create antenna along with sector creation (pecularities due to use of nested_attributes)
   #validates_presence_of :sector_id
+  validates_presence_of :code
   validates_numericality_of :azimuth, :greater_than_or_equal_to => 0, :less_than_or_equal_to => 360, :allow_nil => true
   validates_numericality_of :hba, :greater_than_or_equal_to => 0, :less_than_or_equal_to => 100, :allow_nil => true
   validates_numericality_of :mechanical_tilt, :greater_than_or_equal_to => -14, :less_than_or_equal_to => 100, :allow_nil => true
@@ -50,6 +54,7 @@ class Antenna < ActiveRecord::Base
       "Andrew: LBXX-6516DS-VTM" => Specs.new("900", 8.0, nil),
       "Kathrein: 80010137" => Specs.new("Dual", nil, nil),
       "Kathrein: 741989" => Specs.new("1800", nil, 8.0),
+      "Kathrein: 742212" => Specs.new("1800", nil, 8.0),
       "Kathrein: 742213" => Specs.new("1800", nil, 6.0),
       "Kathrein: 742215" => Specs.new("1800", nil, 10.0),
       "Kathrein: 742265" => Specs.new("Dual", 10.0, 6.0),
@@ -100,7 +105,8 @@ class Antenna < ActiveRecord::Base
                     "Andrew: DBXLH-6565C-VTM", "Andrew: LBX-6513DS-VTM",
                     "Andrew: LBX-6516DS-VTM", "Andrew: LBX-9013DS-VTM",
                     "Andrew: LBXX-6516DS-VTM", "Kathrein: 80010137",
-                    "Kathrein: 741989", "Kathrein: 742213",
+                    "Kathrein: 741989", "Kathrein: 742212",
+                    "Kathrein: 742213",
                     "Kathrein: 742215", "Kathrein: 742265",
                     "Kathrein: 742266", "Kathrein: 80010248",
                     "Kathrein: 739665", "Kathrein: 739684",

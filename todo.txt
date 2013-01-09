@@ -1,13 +1,15 @@
 
 - site audit fields: ask Sameer if they are of any importance
 - add line, area_name and city directly from sqlite database as they have commas
+- search form
+- add antenna code to proposals so that if antenna chagnes (via antenna edit, not proposal) we have a record
 
 - populate database
 - make apache serve requests
 - switch to production mode
 - backup db before each upload
 - save csv file being uploaded
-- pagination on sites
+- remove :id, created_at, and updated_at from attribute_accessible
 
 Later
 =====
@@ -15,8 +17,8 @@ Later
 - add google earth server
 - add service manager's javascripts
 - make user roles selectable by a dashboard via checkboxes
-- multiple proposal submit option
-- multiple proposal commit option
+- bulk proposal submit option
+- bulk proposal commit option
 - database export
 
 
@@ -26,3 +28,4 @@ Completed
 =========
 - signup option invisible
 - previous redesigns visible for each sector
+- pagination on sites

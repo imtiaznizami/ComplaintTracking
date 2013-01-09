@@ -43,13 +43,29 @@ class SiteImport
         result
       end
 
-      #if Sector.find_by_id(row["sector_id"]).nil?
       if Sector.find_by_id(sector_attributes["id"]).nil?
         site.sectors.build(sector_attributes)
       else
-        #site.sectors.where("id = ?", sector_id).first.attributes = sector_attributes
         site.sectors.each do |s|
-          s.attributes = sector_attributes if s.id == Integer(sector_attributes["id"])
+          if s.id == Integer(sector_attributes["id"])
+###            s.attributes = sector_attributes
+
+            antenna_attributes = row.to_hash.dup.inject({}) do |result, (k, v)|
+              result[k.gsub(/^antenna_/,'')] = v if k.start_with?('antenna_')
+              result
+            end
+
+            if Antenna.find_by_id(antenna_attributes["id"]).nil?
+              s.antennas.build(antenna_attributes)
+            else
+              s.antennas.each do |a|
+                if a.id == Integer(antenna_attributes["id"])
+                  a.attributes = antenna_attributes
+                end
+              end
+            end
+
+          end
         end
       end
 

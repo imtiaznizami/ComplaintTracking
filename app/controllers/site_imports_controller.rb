@@ -1,4 +1,6 @@
 class SiteImportsController < ApplicationController
+  load_and_authorize_resource
+
   def new
     @site_import = SiteImport.new
   end

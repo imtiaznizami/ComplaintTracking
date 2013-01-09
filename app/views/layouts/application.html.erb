@@ -46,6 +46,9 @@
                 <li><%= link_to "Proposals", proposals_path %></li>
               <% end %>
               <li><%= link_to "Export Database", "#" %></li>
+              <% if can? :create, SiteImport %>
+                <li><%= link_to " Import Site", new_site_import_path %></li>
+              <% end %>
             </ul>
 
             <ul class="nav pull-right">
