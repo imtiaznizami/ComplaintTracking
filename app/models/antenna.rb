@@ -45,9 +45,12 @@ class Antenna < ActiveRecord::Base
       "Andrew: HBX-6516DS-VTM" => Specs.new("1800", nil, 10.0),
       "Andrew: HBX-6517DS-VTM" => Specs.new("1800", nil, 6.0),
       "Andrew: HBX-9014DS-VTM" => Specs.new("1800", nil, 10.0),
+      "Andrew: HBXX-6516DS-VTM" => Specs.new("1800", nil, 10.0),
+      "Andrew: HBXX-6517DS-VTM" => Specs.new("1800", nil, 6.0),
       "Andrew: DBXLH-6565A-VTM" => Specs.new("Dual", 15.0, 8.0),
       "Andrew: DBXLH-6565B-VTM" => Specs.new("Dual", 10.0, 6.0),
       "Andrew: DBXLH-6565C-VTM" => Specs.new("Dual", 8.0, 6.0),
+      "Andrew: LBX-3319DS-VTM" => Specs.new("900", 8.0, nil),
       "Andrew: LBX-6513DS-VTM" => Specs.new("900", 15.0, nil),
       "Andrew: LBX-6516DS-VTM" => Specs.new("900", 8.0, nil),
       "Andrew: LBX-9013DS-VTM" => Specs.new("900", 10.0, nil),
@@ -63,6 +66,7 @@ class Antenna < ActiveRecord::Base
       "Kathrein: 739665" => Specs.new("900", 10.0, nil),
       "Kathrein: 739684" => Specs.new("900", 14.0, nil),
       "Kathrein: 739686" => Specs.new("900", 7.0, nil),
+      "Kathrein: K7345647" => Specs.new("900", 10.0, nil),
       "Mobi: MB6F-03 5-c-i-s" => Specs.new("Dual", nil, nil),
       "Mobi: MB3F-65-18DE10" => Specs.new("1800", nil, 10.0),
       "Mobi: MB3F-65-20DE" => Specs.new("1800", nil, 10.0),
@@ -74,7 +78,8 @@ class Antenna < ActiveRecord::Base
       "Mobi: MB3BH-65-15DE" => Specs.new("900", 14.0, nil),
       "Mobi: MB3BH-65-18-DDE" => Specs.new("900", 12.0, nil),
       "Mobi: MB3BH-65-18-DE" => Specs.new("900", 12.0, nil),
-      "Mobi: MB3BH-90-16.5DE10" => Specs.new("900", 10.0, nil)
+      "Mobi: MB3BH-90-16.5DE10" => Specs.new("900", 10.0, nil),
+      "Indoor" => Specs.new("Dual", 0.0, 0.0)
     }
 
     unless (antenna_specs[code].band == band)
@@ -101,8 +106,12 @@ class Antenna < ActiveRecord::Base
 
   ANTENNA_TYPES = [ "Andrew: DB874G35A-XY", "Andrew: HBX-6516DS-VTM",
                     "Andrew: HBX-6517DS-VTM", "Andrew: HBX-9014DS-VTM",
+                    "Andrew: HBXX-6516DS-VTM",
+                    "Andrew: HBXX-6517DS-VTM",
                     "Andrew: DBXLH-6565A-VTM", "Andrew: DBXLH-6565B-VTM",
-                    "Andrew: DBXLH-6565C-VTM", "Andrew: LBX-6513DS-VTM",
+                    "Andrew: DBXLH-6565C-VTM",
+                    "Andrew: LBX-3319DS-VTM",
+                    "Andrew: LBX-6513DS-VTM",
                     "Andrew: LBX-6516DS-VTM", "Andrew: LBX-9013DS-VTM",
                     "Andrew: LBXX-6516DS-VTM", "Kathrein: 80010137",
                     "Kathrein: 741989", "Kathrein: 742212",
@@ -110,13 +119,17 @@ class Antenna < ActiveRecord::Base
                     "Kathrein: 742215", "Kathrein: 742265",
                     "Kathrein: 742266", "Kathrein: 80010248",
                     "Kathrein: 739665", "Kathrein: 739684",
-                    "Kathrein: 739686", "Mobi: MB6F-03 5-c-i-s",
+                    "Kathrein: 739686",
+                    "Kathrein: K7345647",
+                    "Mobi: MB6F-03 5-c-i-s",
                     "Mobi: MB3F-65-18DE10", "Mobi: MB3F-65-20DE",
                     "Mobi: MB3F-90-17DE", "Mobi: MB3BH/3F-65-16/17DE",
                     "Mobi: MB3BH/3F-65-17/18DE", "Mobi: MB3BH-3F-65-14/17DE",
                     "Mobi: MB7f-d7/9-wc-001", "Mobi: MB3BH-65-15DE",
                     "Mobi: MB3BH-65-18-DDE", "Mobi: MB3BH-65-18-DE",
-                    "Mobi: MB3BH-90-16.5DE10" ]
+                    "Mobi: MB3BH-90-16.5DE10",
+                    "Indoor"
+  ]
 
 
   #
