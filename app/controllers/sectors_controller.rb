@@ -4,7 +4,11 @@ class SectorsController < ApplicationController
   # GET /sectors
   # GET /sectors.json
   def index
-    @sectors = Sector.paginate(:page => params[:page])
+    @search = Sector.search(params[:q])
+    @sectors = @search.result
+    @search.build_condition if @search.sorts.empty?
+
+    @sectors = @sectors.paginate(:page => params[:page]).order('code ASC')
 
     respond_to do |format|
       format.html # index.html.erb

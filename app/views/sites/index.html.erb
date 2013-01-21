@@ -1,7 +1,18 @@
-<h1>Listing sites</h1>
+<h4>Search sites</h4>
 
-<%= will_paginate @sites %>
-<%= page_entries_info @sites %>
+<%= search_form_for @search do |f| -%>
+  <%= f.condition_fields do |c| -%>
+    <%= render "condition_fields", f: c -%>
+  <% end %>
+  <p><%= link_to_add_fields "Add Conditions", f, :condition -%>
+  <div class="actions"><%= f.submit "Search" -%></div>
+<% end %>
+<hr />
+
+<h4>Listing sites</h4>
+
+<%= will_paginate @sites -%>
+<%= page_entries_info @sites -%>
 
 <table class="table table-striped table-bordered table-condensed">
   <tr>

@@ -4,7 +4,11 @@ class SitesController < ApplicationController
   # GET /sites
   # GET /sites.json
   def index
-    @sites = Site.paginate(:page => params[:page])
+    @search = Site.search(params[:q])
+    @sites = @search.result
+    @search.build_condition if @search.sorts.empty?
+
+    @sites = @sites.paginate(:page => params[:page]).order('code ASC')
 
     respond_to do |format|
       format.html # index.html.erb
