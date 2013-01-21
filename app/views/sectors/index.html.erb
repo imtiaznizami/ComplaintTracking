@@ -20,28 +20,20 @@
     <th>Cell</th>
     <th>Serving area</th>
     <th>Morphology</th>
-    <th>Bracket type</th>
-    <th>Feeder type</th>
-    <th>Feeder length</th>
     <th>Blocking</th>
     <th>Site</th>
-    <th></th>
     <th></th>
     <th></th>
   </tr>
 
 <% @sectors.each do |sector| %>
   <tr>
-    <td><%= sector.code %></td>
+    <td><%= link_to sector.code, sector %></td>
     <td><%= sector.cell %></td>
     <td><%= sector.serving_area %></td>
     <td><%= sector.morphology %></td>
-    <td><%= sector.bracket_type %></td>
-    <td><%= sector.feeder_type %></td>
-    <td><%= sector.feeder_length %></td>
     <td><%= sector.blocking %></td>
-    <td><%= sector.site_id %></td>
-    <td><%= link_to 'Show', sector %></td>
+    <td><%= link_to_unless(sector.site.nil?, sector.site.code, site_path(sector.site)) %></td>
     <td><%= link_to 'Edit', edit_sector_path(sector) if can? :update, Sector %></td>
     <td><%= link_to 'Destroy', sector, confirm: 'Are you sure?', method: :delete if can? :destroy, Sector %></td>
   </tr>
