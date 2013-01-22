@@ -90,6 +90,7 @@ class SectorsController < ApplicationController
           if antenna.changed? #&& 0 == antenna.proposals.length
             proposal = Proposal.new
             proposal.antenna_id = antenna.id
+            proposal.code = antenna.code
             proposal.hba = antenna.hba
             proposal.azimuth = antenna.azimuth
             proposal.mechanical_tilt = antenna.mechanical_tilt
@@ -122,6 +123,7 @@ class SectorsController < ApplicationController
       if antenna.proposals.empty?
         proposal = antenna.proposals.build
         proposal.antenna_id = antenna.id
+        proposal.code = antenna.code
         proposal.hba = antenna.hba
         proposal.azimuth = antenna.azimuth
         proposal.mechanical_tilt = antenna.mechanical_tilt
@@ -158,6 +160,7 @@ class SectorsController < ApplicationController
       if antenna.proposals.empty?
         proposal = antenna.proposals.build
         proposal.antenna_id = antenna.id
+        proposal.code = antenna.code
         proposal.hba = antenna.hba
         proposal.azimuth = antenna.azimuth
         proposal.mechanical_tilt = antenna.mechanical_tilt

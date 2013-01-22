@@ -23,11 +23,11 @@
     <td><%= User.find(proposal.proposed_by).user_name %></td>
     <td><%= proposal.proposed_at.to_date %></td>
 
-    <td><%= "#{proposal.antenna.hba.to_int} > #{proposal.hba.to_int}" unless proposal.hba.nil? %></td>
-    <td><%= "#{proposal.antenna.azimuth.to_int} > #{proposal.azimuth.to_int}" unless proposal.azimuth.nil? %></td>
-    <td><%= "#{proposal.antenna.mechanical_tilt.to_int} > #{proposal.mechanical_tilt.to_int}" unless proposal.mechanical_tilt.nil? %></td>
-    <td><%= "#{proposal.antenna.electrical_tilt_900.to_int} > #{proposal.electrical_tilt_900.to_int}" unless proposal.electrical_tilt_900.nil? %></td>
-    <td><%= "#{proposal.antenna.electrical_tilt_1800.to_int} > #{proposal.electrical_tilt_1800.to_int}" unless proposal.electrical_tilt_1800.nil? %></td>
+    <td><%= "#{proposal.antenna.hba.to_s || ""} > #{proposal.hba.to_s}" unless proposal.hba.nil? %></td>
+    <td><%= "#{proposal.antenna.azimuth.to_s || ""} > #{proposal.azimuth.to_s}" unless proposal.azimuth.nil? %></td>
+    <td><%= "#{proposal.antenna.mechanical_tilt.to_s || ""} > #{proposal.mechanical_tilt.to_s}" unless proposal.mechanical_tilt.nil? %></td>
+    <td><%= "#{proposal.antenna.electrical_tilt_900.to_s || ""} > #{proposal.electrical_tilt_900.to_s}" unless proposal.electrical_tilt_900.nil? %></td>
+    <td><%= "#{proposal.antenna.electrical_tilt_1800.to_s || ""} > #{proposal.electrical_tilt_1800.to_s}" unless proposal.electrical_tilt_1800.nil? %></td>
 
     <td><%= link_to 'Commit', commit_proposal_path(proposal) %></td>
     <td><%= link_to 'Edit', edit_proposal_path(proposal) %></td>

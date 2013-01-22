@@ -1,7 +1,8 @@
 class Antenna < ActiveRecord::Base
   attr_accessible :band, :vendor, :code, :hba, :azimuth, :mechanical_tilt,
     :electrical_tilt_900, :electrical_tilt_1800, :electrical_tilt_2100,
-    :design_status, :sector_id, :id
+    :design_status, :sector_id, :id,
+    :proposals_attributes
 
   # Validations
   #validate :count_within_limit
