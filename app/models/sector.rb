@@ -1,7 +1,7 @@
 class Sector < ActiveRecord::Base
   attr_accessible :code, :cell, :serving_area, :morphology, :bracket_type,
     :feeder_type, :feeder_length, :blocking, :site_id, :created_at, :updated_at, :id,
-    :antennas_attributes, :comments_attributes
+    :antennas_attributes, :proposals_attributes, :comments_attributes
 
   # Validations
   validates_presence_of :code

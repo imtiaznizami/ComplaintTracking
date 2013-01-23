@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130122055229) do
+ActiveRecord::Schema.define(:version => 20130122103234) do
 
   create_table "addresses", :force => true do |t|
     t.decimal  "latitude"
@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(:version => 20130122055229) do
     t.integer  "committed_by"
     t.datetime "committed_at"
     t.string   "code"
+    t.string   "band"
   end
 
   create_table "roles", :force => true do |t|

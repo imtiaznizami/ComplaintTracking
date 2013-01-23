@@ -91,6 +91,7 @@ class SectorsController < ApplicationController
             proposal = Proposal.new
             proposal.antenna_id = antenna.id
             proposal.code = antenna.code
+            proposal.band = antenna.band
             proposal.hba = antenna.hba
             proposal.azimuth = antenna.azimuth
             proposal.mechanical_tilt = antenna.mechanical_tilt
@@ -124,6 +125,7 @@ class SectorsController < ApplicationController
         proposal = antenna.proposals.build
         proposal.antenna_id = antenna.id
         proposal.code = antenna.code
+        proposal.band = antenna.band
         proposal.hba = antenna.hba
         proposal.azimuth = antenna.azimuth
         proposal.mechanical_tilt = antenna.mechanical_tilt
@@ -161,6 +163,7 @@ class SectorsController < ApplicationController
         proposal = antenna.proposals.build
         proposal.antenna_id = antenna.id
         proposal.code = antenna.code
+        proposal.band = antenna.band
         proposal.hba = antenna.hba
         proposal.azimuth = antenna.azimuth
         proposal.mechanical_tilt = antenna.mechanical_tilt

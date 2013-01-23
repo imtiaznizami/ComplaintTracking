@@ -76,9 +76,9 @@
       <th>Design Status</th>
     </tr>
 
-    <% for proposal in @sector.proposals.reverse %>
+    <% for proposal in @sector.proposals.order("proposed_at DESC, updated_at DESC") %>
       <tr>
-        <td><%= proposal.antenna.band %></td>
+        <td><%= proposal.band %></td>
         <td><%= proposal.hba %></td>
         <td><%= proposal.azimuth %></td>
         <td><%= proposal.mechanical_tilt %></td>
