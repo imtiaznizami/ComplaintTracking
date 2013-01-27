@@ -38,4 +38,10 @@ ComplaintTracker::Application.configure do
   # Imtiaz's additions
   # Addition for gem 'devise'
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  # Addition to output request logs when using unicorn instead of webrick
+  config.logger = Logger.new(STDOUT)
+  config.logger.level = Logger.const_get(
+    ENV['LOG_LEVEL'] ? ENV['LOG_LEVEL'].upcase : 'DEBUG'
+  )
 end
