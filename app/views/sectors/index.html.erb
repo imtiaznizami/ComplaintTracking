@@ -1,13 +1,8 @@
-<h4>Search sectors</h4>
-
-<%= search_form_for @search do |f| -%>
-  <%= f.condition_fields do |c| -%>
-    <%= render "condition_fields", f: c -%>
+<% content_for :search do %>
+  <%= form_tag sectors_path, :method => :get, :class => 'navbar-search pull-left' do %>
+    <%= text_field_tag 'q', params[:q], :placeholder => "Search" %>
   <% end %>
-  <p><%= link_to_add_fields "Add Conditions", f, :condition -%>
-  <div class="actions"><%= f.submit "Search" -%></div>
 <% end %>
-<hr />
 
 <h4>Listing sectors</h4>
 

@@ -4,9 +4,11 @@ class SitesController < ApplicationController
   # GET /sites
   # GET /sites.json
   def index
-    @search = Site.search(params[:q])
-    @sites = @search.result
-    @search.build_condition if @search.sorts.empty?
+    if params[:q].nil?
+      @search = Site.search(params[:q])
+    else
+      @sites = Site.search_by_vitals(params[:q])
+    end
 
     @sites = @sites.paginate(:page => params[:page]).order('code ASC')
 

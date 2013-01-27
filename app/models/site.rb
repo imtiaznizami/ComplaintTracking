@@ -5,6 +5,17 @@ class Site < ActiveRecord::Base
     :address_attributes, :partner_attributes, :audit_attributes, :comments_attributes, :sectors_attributes,
     :created_at, :updated_at #, :id
 
+  # To incorporate full text searches
+  include PgSearch
+  pg_search_scope :search_by_vitals, :against => {
+    :code => 'A',
+    :coverage_type => 'B',
+    :cabinet_type => 'C',
+    :equipment_vendor => 'D'
+  },
+  :using => {:tsearch => {:prefix => true}}
+
+
   # Validations
   validates_presence_of :code
   validates_uniqueness_of :code

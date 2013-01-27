@@ -3,6 +3,16 @@ class Sector < ActiveRecord::Base
     :feeder_type, :feeder_length, :blocking, :site_id, :created_at, :updated_at, :id,
     :antennas_attributes, :proposals_attributes, :comments_attributes
 
+  # To incorporate full text searches
+  include PgSearch
+  pg_search_scope :search_by_vitals, :against => {
+    :code => 'A',
+    :cell => 'B',
+    :serving_area => 'C',
+    :morphology => 'D'
+  },
+  :using => {:tsearch => {:prefix => true}}
+
   # Validations
   validates_presence_of :code
   validates_presence_of :site_id

@@ -32,13 +32,13 @@
     <div class="navbar navbar-inverse navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-inverse-collapse">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
           <a class="brand" href="#">Avion</a>
-          <div class="nav-collapse collapse">
+          <div class="nav-collapse collapse navbar-inverse-collapse">
             <ul class="nav">
               <li class="active"><%= link_to "Sites", sites_path %></li>
               <li><%= link_to "Sectors", sectors_path %></li>
@@ -51,10 +51,12 @@
               <% end %>
             </ul>
 
+            <%= yield(:search) %>
+
             <ul class="nav pull-right">
               <% if user_signed_in? %>
                 <li>
-                  <%= current_user.email %> 
+                  <%= current_user.user_name %> 
                 </li>
                 <li>
                   <%= link_to('Sign out', destroy_user_session_path, :method=>'delete') %>
@@ -67,8 +69,8 @@
             </ul>
           </div><!--/.nav-collapse -->
         </div>
-      </div>
-    </div>
+      </div><!--/nav-inner -->
+    </div><!--/navbar -->
 
     <!-- Main Page
     ================================================== -->

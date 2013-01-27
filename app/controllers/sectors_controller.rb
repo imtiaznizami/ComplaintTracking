@@ -4,9 +4,11 @@ class SectorsController < ApplicationController
   # GET /sectors
   # GET /sectors.json
   def index
-    @search = Sector.search(params[:q])
-    @sectors = @search.result
-    @search.build_condition if @search.sorts.empty?
+    if params[:q].nil?
+      @search = Sector.search(params[:q])
+    else
+      @sectors = Sector.search_by_vitals(params[:q])
+    end
 
     @sectors = @sectors.paginate(:page => params[:page]).order('code ASC')
 
