@@ -35,4 +35,45 @@ class Site < ActiveRecord::Base
   accepts_nested_attributes_for :audit, :allow_destroy => true
   accepts_nested_attributes_for :sectors, :allow_destroy => true
   accepts_nested_attributes_for :comments, :reject_if => lambda { |a| a[:content].blank? }, :allow_destroy => true
+
+  def self.to_csv
+    file_path = "#{Rails.root}/tmp/"
+    file_name = "site_database.csv"
+    file = "#{file_path}#{file_name}"
+
+    site_data = Site.first.attributes.keys.reject {|elt| ["id", "created_at", "updated_at"].include?(elt)}
+    sector_data = Sector.first.attributes.keys.reject {|elt| ["id", "created_at", "updated_at", "site_id"].include?(elt)}
+    antenna_data = Antenna.first.attributes.keys.reject {|elt| ["created_at", "updated_at", "sector_id", "electrical_tilt_2100"].include?(elt)}
+
+    unless FileTest.exists?(file)
+      #CSV.generate do |csv|
+      CSV.open(file, "wb") do |csv|
+        csv << [
+          site_data.map {|elt| "site:" + elt},
+          sector_data.map {|elt| "sector:" + elt},
+          antenna_data.map {|elt| "antenna:" + elt}
+        ].flatten
+        all.each do |site|
+          #where(:code => "KHD507").each do |site|
+          site.sectors.each do |sector|
+            sector.antennas.each do |antenna|
+              csv << [
+                site.attributes.values_at(*site_data),
+                sector.attributes.values_at(*sector_data),
+                antenna.attributes.values_at(*antenna_data)
+              ].flatten
+            end
+          end
+        end
+      end
+    end
+
+    CSV.generate do |csv|
+      CSV.foreach(file) do |row|
+        csv << row
+      end
+    end
+
+  end
+
 end

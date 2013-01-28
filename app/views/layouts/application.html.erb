@@ -45,7 +45,7 @@
               <% if can? :update, Proposal %>
                 <li><%= link_to "Proposals", proposals_path %></li>
               <% end %>
-              <li><%= link_to "Export Database", "#" %></li>
+              <li><%= link_to "Export Database", sites_path(format: "csv") %></li>
               <% if can? :create, SiteImport %>
                 <li><%= link_to " Import Site", new_site_import_path %></li>
               <% end %>
