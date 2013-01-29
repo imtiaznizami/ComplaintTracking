@@ -12,3 +12,4 @@ jQuery ->
     $(this).before($(this).data('fields').replace(regexp, time))
     event.preventDefault()
 
+  $('dropdown-toggle').dropdown()

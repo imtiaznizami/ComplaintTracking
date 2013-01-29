@@ -38,7 +38,7 @@ class Site < ActiveRecord::Base
 
   def self.to_csv
     file_path = "#{Rails.root}/tmp/"
-    file_name = "site_database.csv"
+    file_name = "site_database_long.csv"
     file = "#{file_path}#{file_name}"
 
     site_data = Site.first.attributes.keys.reject {|elt| ["id", "created_at", "updated_at"].include?(elt)}

@@ -2,7 +2,8 @@ class Antenna < ActiveRecord::Base
   attr_accessible :band, :vendor, :code, :hba, :azimuth, :mechanical_tilt,
     :electrical_tilt_900, :electrical_tilt_1800, :electrical_tilt_2100,
     :design_status, :sector_id, :id,
-    :proposals_attributes
+    :proposals_attributes,
+    :effective_tilt_900, :effective_tilt_1800
 
   # Validations
   #validate :count_within_limit
@@ -100,6 +101,21 @@ class Antenna < ActiveRecord::Base
     end
   end
 
+  def effective_tilt_900
+    if (mechanical_tilt || electrical_tilt_900).nil?
+      nil
+    else
+      mechanical_tilt.to_i + electrical_tilt_900.to_i
+    end
+  end
+
+  def effective_tilt_1800
+    if (mechanical_tilt || electrical_tilt_1800).nil?
+      nil
+    else
+      mechanical_tilt.to_i + electrical_tilt_1800.to_i
+    end
+  end
 
   # Constants
   #BANDS = ["900", "1800", "2100", "Dual", "Tri"]
