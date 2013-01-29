@@ -30,6 +30,7 @@ gem 'devise'
 gem 'cancan'
 gem 'therubyracer'
 gem 'paper_trail', '~> 2'
+gem 'awesome_print', :require => 'ap'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
