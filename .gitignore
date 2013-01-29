@@ -16,6 +16,9 @@
 # To run development without  precompiled assets, delete public/assets/
 /public/assets/*
 
+# Ignore exports
+/public/exports/*
+
 # Ignore all logfiles and tempfiles.
 /log/*.log
 /public/new_complaints/*

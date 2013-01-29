@@ -5,12 +5,12 @@ namespace :data do
 namespace :export do
 
 desc "Export site database"
-task :database => :environment do
+task :completeDB => :environment do
 
 count = 0
 start_time = Time.now
-file_path = "#{Rails.root}/tmp/"
-file_name = "site_database.csv"
+file_path = "#{Rails.root}/public/exports/"
+file_name = "completeDB.csv"
 file = "#{file_path}#{file_name}"
 
 File.delete(file) if FileTest.exists?(file)
@@ -45,12 +45,12 @@ puts Time.now.strftime("%d/%m/%Y %H:%M:%S")
 end 
 
 desc "Export site database"
-task :database_short => :environment do
+task :shortDB => :environment do
 
 count = 0
 start_time = Time.now
-file_path = "#{Rails.root}/tmp/"
-file_name = "site_database.csv"
+file_path = "#{Rails.root}/public/exports/"
+file_name = "shortDB.csv"
 file = "#{file_path}#{file_name}"
 
 File.delete(file) if FileTest.exists?(file)
@@ -149,10 +149,7 @@ CSV.open(file, "wb") do |csv|
   puts "\n#{count} records exported."
   puts start_time.strftime("%d/%m/%Y %H:%M:%S")
   puts Time.now.strftime("%d/%m/%Y %H:%M:%S")
-
-
 end
-
 
 end 
 end

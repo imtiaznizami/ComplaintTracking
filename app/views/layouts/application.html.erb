@@ -51,14 +51,15 @@
                 <li class="dropdown">
                 <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> Exoprt <b class="caret"></b></a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
-                  <li><a tabindex="-1" href="http://google.com"> Short DB </a></li>
-                  <li><a tabindex="-1" href="http://google.com"> Complete DB </a></li>
+                  <!-- TODO: What if the file is not there? It should be generated first. -->
+                  <li><a tabindex="-1" href="exports/shortDB.csv"> Short DB </a></li>
+                  <li><a tabindex="-1" href="exports/completeDB.csv"> Complete DB </a></li>
                 </ul>
                 </li>
               </ul>
 
               <% if can? :create, SiteImport %>
-                <li><%= link_to " Import Site", new_site_import_path %></li>
+                <li><%= link_to "Import Site", new_site_import_path %></li>
               <% end %>
             </ul>
 
