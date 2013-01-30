@@ -37,19 +37,23 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">Avion</a>
-          <div class="nav-collapse collapse navbar-inverse-collapse">
+          <%= link_to "Avion", sites_path, :class => "brand" %>
+          <div class="nav-collapse navbar-inverse-collapse">
             <ul class="nav">
-              <li class="active"><%= link_to "Sites", sites_path %></li>
+              <li><%= link_to "Sites", sites_path, :class => "active" %></li>
               <li><%= link_to "Sectors", sectors_path %></li>
               <% if can? :update, Proposal %>
                 <li><%= link_to "Proposals", proposals_path %></li>
               <% end %>
 
+              <% if can? :create, SiteImport %>
+                <li><%= link_to "Import Site", new_site_import_path %></li>
+              <% end %>
+
               <!-- Dropdown export -->
               <ul class="nav" role="navigation">
                 <li class="dropdown">
-                <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> Exoprt <b class="caret"></b></a>
+                <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> Export <b class="caret"></b></a>
                 <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
                   <!-- TODO: What if the file is not there? It should be generated first. -->
                   <li><a tabindex="-1" href="exports/shortDB.csv"> Short DB </a></li>
@@ -58,9 +62,6 @@
                 </li>
               </ul>
 
-              <% if can? :create, SiteImport %>
-                <li><%= link_to "Import Site", new_site_import_path %></li>
-              <% end %>
             </ul>
 
             <%= yield(:search) %>
