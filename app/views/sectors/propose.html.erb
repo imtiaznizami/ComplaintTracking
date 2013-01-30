@@ -1,4 +1,4 @@
-<h1>Propose antenna parameters</h1>
+<h4>Propose antenna parameters</h4>
 
 <%= nested_form_for(@sector, :url => {:action => :submit_proposal}, :html => {:class => "form-horizontal"}) do |f| %>
 <%#= nested_form_for(@sector, :html => {:class => "form-horizontal"}) do |f| %>
@@ -78,7 +78,6 @@
         <%= render "propose_antenna_fields", :f => builder %>
         <hr />
       <% end %>
-      <p><%= f.link_to_add "Add an antenna", :antennas %></p>
 
       <div class="control-group">
         <%= f.fields_for :comments do |builder| %>
