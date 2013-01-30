@@ -58,45 +58,45 @@ File.delete(file) if FileTest.exists?(file)
 #CSV.generate do |csv|
 CSV.open(file, "wb") do |csv|
   csv << %w(
-          site:code
-          sector:code
-          sector:cell
-          site:latitude
-          site:longitude
-          sector:azimuth
-          antenna:900:code
-          antenna:900:band
-          antenna:900:hba
-          antenna:900:azimuth
-          antenna:900:tilt:mechanical
-          antenna:900:tilt:electrical
-          antenna:900:tilt:effective
-          antenna:1800:code
-          antenna:1800:band
-          antenna:1800:hba
-          antenna:1800:azimuth
-          antenna:1800:tilt:mechanical
-          antenna:1800:tilt:electrical
-          antenna:1800:tilt:effective
-          site:sector:count
-          sector:antenna:count
-          sector:blocking
-          sector:bracket_type
-          site:phase
-          site:building_height
-          site:amsl
-          site:structure_type
-          site:structure_height
-          site:coverage_type
-          site:cabinet_type
-          site:partner:code
-          site:partner:operator
-          site:partner:status
-          site:address:line
-          site:address:area_name
-          site:address:city
-          site:address:district
-          site:address:province
+          code:site
+          code:sector
+          cell
+          latitude
+          longitude
+          azimuth:sector
+          code:900:antenna
+          band:900:antenna
+          hba:900:antenna
+          azimuth:900:antenna
+          mechanical:900:tilt:antenna
+          electrical:900:tilt:antenna
+          effective:900:tilt:antenna
+          code:1800:antenna
+          band:1800:antenna
+          hba:1800:antenna
+          azimuth:1800:antenna
+          mechanical:1800:tilt:antenna
+          electrical:1800:tilt:antenna
+          effective:1800:tilt:antenna
+          sector_count:site
+          antenna_count:sector
+          blocking:sector
+          bracket_type:sector
+          phase
+          building_height
+          amsl
+          structure_type
+          structure_height
+          coverage_type
+          cabinet_type
+          address:line
+          address:area_name
+          address:city
+          address:district
+          address:province
+          partner:code
+          partner:operator
+          partner:status
   )
   Site.all.each do |site|
     #where(:code => "KHD507").each do |site|
@@ -122,7 +122,7 @@ CSV.open(file, "wb") do |csv|
         sector.antenna_1800.mechanical_tilt,
         sector.antenna_1800.electrical_tilt_1800,
         sector.antenna_1800.effective_tilt_900,
-        site.sectors.count,
+        site.physical_sector_count,
         sector.antennas.count,
         sector.blocking,
         sector.bracket_type,
@@ -133,14 +133,14 @@ CSV.open(file, "wb") do |csv|
         site.structure_height,
         site.coverage_type,
         site.cabinet_type,
-        site.partner.code,
-        site.partner.operator,
-        site.partner.status,
         site.address.line,
         site.address.area_name,
         site.address.city,
         site.address.district,
-        site.address.province
+        site.address.province,
+        site.partner.code,
+        site.partner.operator,
+        site.partner.status,
       ]
     end
       end

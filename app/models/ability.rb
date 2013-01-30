@@ -10,14 +10,17 @@ class Ability
       can :read, [Site, Address, Partner, Audit, Sector, Antenna, Comment, Complaint, Proposal]
       can :manage, [Site, Address, Partner, Audit, Sector, Antenna, Comment]
       can :manage, [Proposal]
+      can :propose, [Sector]
     elsif user.role? :edit_coordinator
       can :read, [Site, Address, Partner, Audit, Sector, Antenna, Comment, Complaint, Proposal]
       can :update, [Site, Address, Partner, Audit, Sector, Antenna, Comment]
       can :create, [Site, Address, Partner, Audit, Sector, Antenna, Comment]
       can :manage, [Proposal]
+      can :propose, [Sector]
     elsif user.role? :proposal_coordinator
       can :read, [Site, Address, Partner, Audit, Sector, Antenna, Comment, Complaint, Proposal]
       can :manage, [Proposal]
+      can :propose, [Sector]
     elsif user.role? :complaint_coordinator
       can :read, [Site, Address, Partner, Audit, Sector, Antenna, Comment, Complaint]
       can :update, [Complaint, Comment]

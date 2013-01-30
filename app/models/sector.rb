@@ -2,7 +2,7 @@ class Sector < ActiveRecord::Base
   attr_accessible :code, :cell, :serving_area, :morphology, :bracket_type,
     :feeder_type, :feeder_length, :blocking, :site_id, :created_at, :updated_at, :id,
     :antennas_attributes, :proposals_attributes, :comments_attributes,
-    :azimuth, :antenna_900, :antenna_1800
+    :azimuth, :antenna_900, :antenna_1800, :physical_sector_count
 
   # To incorporate full text searches
   include PgSearch

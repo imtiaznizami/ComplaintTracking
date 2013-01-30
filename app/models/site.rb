@@ -76,4 +76,8 @@ class Site < ActiveRecord::Base
 
   end
 
+  def physical_sector_count
+    sectors.select { |s| s.code =~ /[1234]$/ }.count
+  end
+
 end
