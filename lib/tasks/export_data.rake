@@ -10,7 +10,7 @@ task :completeDB => :environment do
 count = 0
 start_time = Time.now
 file_path = "#{Rails.root}/public/exports/"
-file_name = "completeDB.csv"
+file_name = "completeDB.csv.temp"
 file = "#{file_path}#{file_name}"
 
 File.delete(file) if FileTest.exists?(file)
@@ -18,12 +18,18 @@ File.delete(file) if FileTest.exists?(file)
 site_data = Site.first.attributes.keys.reject {|elt| ["id", "created_at", "updated_at"].include?(elt)}
 sector_data = Sector.first.attributes.keys.reject {|elt| ["id", "created_at", "updated_at", "site_id"].include?(elt)}
 antenna_data = Antenna.first.attributes.keys.reject {|elt| ["created_at", "updated_at", "sector_id", "electrical_tilt_2100"].include?(elt)}
+address_data = Address.first.attributes.keys.reject {|elt| ["id", "created_at", "updated_at", "sector_id"].include?(elt)}
+partner_data = Partner.first.attributes.keys.reject {|elt| ["id", "created_at", "updated_at", "sector_id"].include?(elt)}
+audit_data = Audit.first.attributes.keys.reject {|elt| ["id", "created_at", "updated_at", "sector_id"].include?(elt)}
 
 CSV.open(file, "wb") do |csv|
   csv << [
     site_data.map {|elt| "site:" + elt},
     sector_data.map {|elt| "sector:" + elt},
-    antenna_data.map {|elt| "antenna:" + elt}
+    antenna_data.map {|elt| "antenna:" + elt},
+    address_data.map {|elt| "antenna:" + elt},
+    partner_data.map {|elt| "antenna:" + elt},
+    audit_data.map {|elt| "antenna:" + elt},
   ].flatten
   Site.all.each do |site|
     site.sectors.each do |sector|
@@ -31,7 +37,10 @@ CSV.open(file, "wb") do |csv|
         csv << [
           site.attributes.values_at(*site_data),
           sector.attributes.values_at(*sector_data),
-          antenna.attributes.values_at(*antenna_data)
+          antenna.attributes.values_at(*antenna_data),
+          site.address.attributes.values_at(*address_data),
+          site.partner.attributes.values_at(*partner_data),
+          site.audit.attributes.values_at(*audit_data),
         ].flatten
       end
     end
@@ -50,7 +59,7 @@ task :shortDB => :environment do
 count = 0
 start_time = Time.now
 file_path = "#{Rails.root}/public/exports/"
-file_name = "shortDB.csv"
+file_name = "shortDB.csv.temp"
 file = "#{file_path}#{file_name}"
 
 File.delete(file) if FileTest.exists?(file)

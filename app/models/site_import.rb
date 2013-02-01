@@ -64,7 +64,6 @@ class SiteImport
                 end
               end
             end
-
           end
         end
       end
