@@ -16,8 +16,9 @@ class Sector < ActiveRecord::Base
 
   # Validations
   validates_presence_of :code
-  validates_presence_of :site_id
-  validates_uniqueness_of :code
+  # Commented out to cater for imports where site is to be created along with sector
+  #validates_presence_of :site_id
+  validates_uniqueness_of :code, :message => "Sector code has already been taken."
   validates_numericality_of :cell, :only_integer => true, :allow_nil => true
 
   # Relations

@@ -5,6 +5,21 @@ namespace :data do
 namespace :export do
 
 desc "Export site database"
+task :backup do
+file_path = "/vagrant/"
+file_name = "ap_#{Time.now.strftime("%Y%m%d")}.dump"
+file = "#{file_path}#{file_name}"
+
+i = 0
+while FileTest.exists?(file) do
+  i += 1
+  file = "#{file_path}#{file_name}#{i}"
+end
+
+sh "pg_dump avion_production > #{file}"
+end
+
+desc "Export site database"
 task :completeDB => :environment do
 
 count = 0

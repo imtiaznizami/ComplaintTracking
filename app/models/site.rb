@@ -18,7 +18,7 @@ class Site < ActiveRecord::Base
 
   # Validations
   validates_presence_of :code
-  validates_uniqueness_of :code
+  validates_uniqueness_of :code, :message => "Site code has already been taken."
   validates_numericality_of :building_height, :allow_nil => true
   validates_numericality_of :amsl, :allow_nil => true
 
