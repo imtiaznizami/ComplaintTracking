@@ -7,29 +7,36 @@ class Ability
     if user.role? :admin
       can :manage, :all
     elsif user.role? :delete_coordinator
-      can :read, [Site, Address, Partner, Audit, Sector, Antenna, Comment, Complaint, Proposal]
-      can :manage, [Site, Address, Partner, Audit, Sector, Antenna, Comment]
-      can :manage, [Proposal]
+      can :read, [Site, Address, Partner, Audit, Sector, Antenna, Comment, Complaint, Proposal, Survey]
+      can :manage, [Site, Address, Partner, Audit, Sector, Antenna, Comment, Proposal]
       can :propose, [Sector]
+      can :create, [Survey]
+      can :update, [Survey]
     elsif user.role? :edit_coordinator
-      can :read, [Site, Address, Partner, Audit, Sector, Antenna, Comment, Complaint, Proposal]
-      can :update, [Site, Address, Partner, Audit, Sector, Antenna, Comment]
-      can :create, [Site, Address, Partner, Audit, Sector, Antenna, Comment]
+      can :read, [Site, Address, Partner, Audit, Sector, Antenna, Comment, Complaint, Proposal, Survey]
+      can :update, [Site, Address, Partner, Audit, Sector, Antenna, Comment, Survey]
+      can :create, [Site, Address, Partner, Audit, Sector, Antenna, Comment, Survey]
       can :manage, [Proposal]
       can :propose, [Sector]
     elsif user.role? :proposal_coordinator
-      can :read, [Site, Address, Partner, Audit, Sector, Antenna, Comment, Complaint, Proposal]
+      can :read, [Site, Address, Partner, Audit, Sector, Antenna, Comment, Complaint, Proposal, Survey]
       can :manage, [Proposal]
       can :propose, [Sector]
+      can :create, [Survey]
+      can :update, [Survey]
     elsif user.role? :complaint_coordinator
-      can :read, [Site, Address, Partner, Audit, Sector, Antenna, Comment, Complaint]
-      can :update, [Complaint, Comment]
-    elsif user.role? :normal_user
-      can :read, [Site, Address, Partner, Audit, Sector, Antenna, Comment, Complaint]
+      can :read, [Site, Address, Partner, Audit, Sector, Antenna, Comment, Complaint, Survey]
       can :create, [Proposal]
       can :propose, [Sector]
+      can :manage, [Survey]
+    elsif user.role? :normal_user
+      can :read, [Site, Address, Partner, Audit, Sector, Antenna, Comment, Complaint, Survey]
+      can :create, [Proposal]
+      can :propose, [Sector]
+      can :create, [Survey]
+      can :update, [Survey]
     else
-      can :read, [Site, Address, Partner, Audit, Sector, Antenna, Comment, Complaint]
+      can :read, [Site, Address, Partner, Audit, Sector, Antenna, Comment, Complaint, Survey]
     end
 
 

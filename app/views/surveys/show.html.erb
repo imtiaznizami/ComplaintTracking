@@ -1,0 +1,55 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @survey.name %>
+</p>
+
+<p>
+  <b>Received on:</b>
+  <%= @survey.received_on %>
+</p>
+
+<p>
+  <b>Closed on:</b>
+  <%= @survey.closed_on %>
+</p>
+
+<p>
+  <b>Sales officer:</b>
+  <%= @survey.sales_officer %>
+</p>
+
+<p>
+  <b>Rf engineer:</b>
+  <%= @survey.rf_engineer %>
+</p>
+
+<p>
+  <b>Drive tester:</b>
+  <%= @survey.drive_tester %>
+</p>
+
+<p>
+  <b>Log:</b>
+  <%= @survey.log %>
+</p>
+
+<p>
+  <b>Status:</b>
+  <%= @survey.status %>
+</p>
+
+<p>
+  <b>Rf decision:</b>
+  <%= @survey.rf_decision %>
+</p>
+
+<p>
+  <b>Solution:</b>
+  <%= @survey.solution %>
+</p>
+
+
+<%= link_to 'Edit', edit_survey_path(@survey) %> |
+<%= link_to 'Back', surveys_path %>

@@ -1,4 +1,6 @@
 ComplaintTracker::Application.routes.draw do
+  resources :surveys
+
   resources :proposals do
     get :commit, :on => :member
   end

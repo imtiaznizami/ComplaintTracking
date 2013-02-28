@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  name: MyString
+  received_on: 2013-02-27 05:26:41
+  closed_on: 2013-02-27 05:26:41
+  sales_officer: MyString
+  rf_engineer: MyString
+  drive_tester: MyString
+  log: MyString
+  status: MyString
+  rf_decision: MyString
+  solution: MyString
+
+two:
+  name: MyString
+  received_on: 2013-02-27 05:26:41
+  closed_on: 2013-02-27 05:26:41
+  sales_officer: MyString
+  rf_engineer: MyString
+  drive_tester: MyString
+  log: MyString
+  status: MyString
+  rf_decision: MyString
+  solution: MyString

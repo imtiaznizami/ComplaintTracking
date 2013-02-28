@@ -1,0 +1,45 @@
+<% content_for :search do %>
+  <%= form_tag surveys_path, :method => :get, :class => 'navbar-search pull-left' do %>
+    <%= text_field_tag 'q', params[:q], :placeholder => "Search" %>
+  <% end %>
+<% end %>
+
+<h4>Listing surveys</h4>
+
+<%= will_paginate @surveys -%>
+<%= page_entries_info @surveys -%>
+
+<table class="table table-striped table-bordered table-condensed">
+
+  <tr>
+    <th>Name</th>
+    <th>Received on</th>
+    <th>Sales officer</th>
+    <th>Rf engineer</th>
+    <th>Status</th>
+    <th>Rf decision</th>
+    <th>Solution</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @surveys.each do |survey| %>
+  <tr>
+    <td><%= survey.name %></td>
+    <td><%= survey.received_on.to_date unless survey.received_on.nil? %></td>
+    <td><%= survey.sales_officer %></td>
+    <td><%= survey.rf_engineer %></td>
+    <td><%= survey.status %></td>
+    <td><%= survey.rf_decision %></td>
+    <td><%= survey.solution %></td>
+    <td><%= link_to 'Show', survey %></td>
+    <td><%= link_to 'Edit', edit_survey_path(survey) %></td>
+    <td><%= link_to 'Destroy', survey, confirm: 'Are you sure?', method: :delete if can? :destroy, Survey %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Survey', new_survey_path %>

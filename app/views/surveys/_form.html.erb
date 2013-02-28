@@ -1,0 +1,102 @@
+<%= nested_form_for(@survey, :html => {:class => "form-horizontal"}) do |f| %>
+  <% if @survey.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@survey.errors.count, "error") %> prohibited this survey from being saved:</h2>
+
+      <ul>
+      <% @survey.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :name, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :name %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :received_on, :class => "control-label" %>
+    <div class="controls">
+      <div class="input-append date" id="received-on" data-date="12-10-2012" data-date-format="dd-mm-yyyy">
+        <%= f.text_field :received_on, :class => "span2" %>
+        <span class="add-on"><i class="icon-th"></i></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :closed_on, :class => "control-label" %>
+    <div class="controls">
+      <div class="input-append date" id="closed-on" data-date="12-10-2012" data-date-format="dd-mm-yyyy">
+        <%= f.text_field :closed_on, :class => "span2" %>
+        <span class="add-on"><i class="icon-th"></i></span>
+      </div>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :sales_officer, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :sales_officer %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :rf_engineer, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :rf_engineer %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :drive_tester, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :drive_tester %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :log, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :log %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :status, :class => "control-label" %>
+    <div class="controls">
+      <%= f.select :status, ["Open", "Closed"], {:include_blank => true} %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :rf_decision, :class => "control-label" %>
+    <div class="controls">
+      <%= f.select :rf_decision, ["Cleared", "Rejected"], {:include_blank => true} %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.label :solution, :class => "control-label" %>
+    <div class="controls">
+      <%= f.select :solution, ["Repeater", "Indoor Micro"], {:include_blank => true} %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <%= f.fields_for :comments do |builder| %>
+      <%= render "comment_fields", :f => builder %>
+      <hr />
+    <% end %>
+    <p><%= f.link_to_add "Add a comment", :comments %></p>
+  </div>
+
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
