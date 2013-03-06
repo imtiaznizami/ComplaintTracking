@@ -1,0 +1,14 @@
+
+Recreating a database from dump:
+===============================
+
+- Reload vagrant environment.
+- SSH into vagrant.
+- cd to rails application directory
+- Execute these commands:
+    RAILS_ENV=production rake db:drop
+    psql template1
+      create database avion_production owner vagrant;
+      \q
+    psql avion_production < /vagrant/ap_20130306.dump (insert latest database name here)
+    RAILS_ENV=production rake db:migrate
