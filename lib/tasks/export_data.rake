@@ -25,7 +25,7 @@ task :completeDB => :environment do
 count = 0
 start_time = Time.now
 file_path = "#{Rails.root}/public/exports/"
-file_name = "completeDB.csv.temp"
+file_name = "completeDB.csv"
 file = "#{file_path}#{file_name}"
 
 File.delete(file) if FileTest.exists?(file)
@@ -74,7 +74,7 @@ task :shortDB => :environment do
 count = 0
 start_time = Time.now
 file_path = "#{Rails.root}/public/exports/"
-file_name = "shortDB.csv.temp"
+file_name = "shortDB.csv"
 file = "#{file_path}#{file_name}"
 
 File.delete(file) if FileTest.exists?(file)

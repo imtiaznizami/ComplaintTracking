@@ -1,7 +1,7 @@
 class Survey < ActiveRecord::Base
   attr_accessible :name, :received_on, :closed_on, :sales_officer,
       :rf_engineer, :drive_tester, :log, :status, :rf_decision,
-      :solution, :comments_attributes
+      :solution, :address, :comments_attributes
 
   # To incorporate full text searches
   include PgSearch
@@ -13,7 +13,8 @@ class Survey < ActiveRecord::Base
       :log,
       :status,
       :rf_decision,
-      :solution
+      :solution,
+      :address
   ],
   :using => {:tsearch => {:prefix => true}}
 

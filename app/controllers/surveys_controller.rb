@@ -1,5 +1,5 @@
 class SurveysController < ApplicationController
-  load_and_authorize_resource
+  load_resource
 
   # GET /surveys
   # GET /surveys.json
