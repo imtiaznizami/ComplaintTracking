@@ -21,6 +21,8 @@ class Sector < ActiveRecord::Base
   validates_uniqueness_of :code, :message => "Sector code has already been taken."
   validates_numericality_of :cell, :only_integer => true, :allow_nil => true
 
+  validate :correct_azimuth
+
   # Relations
   belongs_to :site
   has_many :antennas, :dependent => :destroy
@@ -33,6 +35,16 @@ class Sector < ActiveRecord::Base
 
   def redesigns
     
+  end
+
+  def correct_azimuth
+    a = self.antennas.first.azimuth
+
+    self.antennas.each do |antenna|
+      if a != antenna.azimuth
+        errors.add(:base, "Error: We cannot have antennas with multiple azimuths per sector.")
+      end
+    end
   end
 
   # TODO: Improve implementation

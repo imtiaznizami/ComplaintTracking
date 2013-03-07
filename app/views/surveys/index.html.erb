@@ -25,7 +25,7 @@
   </tr>
 
 <% @surveys.each do |survey| %>
-  <tr>
+  <tr class=<%= "Closed".casecmp(survey.status) == 0 ? "success" : "error" %>>
     <td><%= survey.name %></td>
     <td><%= survey.received_on.to_date unless survey.received_on.nil? %></td>
     <td><%= survey.sales_officer %></td>

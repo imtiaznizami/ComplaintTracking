@@ -58,3 +58,16 @@
 
 <%= link_to 'Edit', edit_survey_path(@survey) %> |
 <%= link_to 'Back', surveys_path %>
+
+
+<!-- Comments
+================================================== -->
+<p>
+  <hr />
+  <h4>Comments</h4>
+  <% for comment in @survey.comments %>
+    <%= simple_format(comment.content) %>
+    <hr />
+  <% end %>
+</p>
+
