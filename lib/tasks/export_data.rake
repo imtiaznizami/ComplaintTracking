@@ -22,6 +22,10 @@ end
 desc "Export site database"
 task :completeDB => :environment do
 
+if Rails.env.development? then
+  raise "Error: You are in development environment."
+end
+
 count = 0
 start_time = Time.now
 file_path = "#{Rails.root}/public/exports/"
@@ -42,9 +46,9 @@ CSV.open(file, "wb") do |csv|
     site_data.map {|elt| "site:" + elt},
     sector_data.map {|elt| "sector:" + elt},
     antenna_data.map {|elt| "antenna:" + elt},
-    address_data.map {|elt| "antenna:" + elt},
-    partner_data.map {|elt| "antenna:" + elt},
-    audit_data.map {|elt| "antenna:" + elt},
+    address_data.map {|elt| "address:" + elt},
+    partner_data.map {|elt| "partner:" + elt},
+    audit_data.map {|elt| "audit:" + elt},
   ].flatten
   Site.all.each do |site|
     site.sectors.each do |sector|
@@ -70,6 +74,10 @@ end
 
 desc "Export site database"
 task :shortDB => :environment do
+
+if Rails.env.development? then
+  raise "Error: You are in development environment."
+end
 
 count = 0
 start_time = Time.now
