@@ -153,7 +153,7 @@ CSV.open(file, "wb") do |csv|
         sector.antenna_1800.azimuth,
         sector.antenna_1800.mechanical_tilt,
         sector.antenna_1800.electrical_tilt_1800,
-        sector.antenna_1800.effective_tilt_900,
+        sector.antenna_1800.effective_tilt_1800,
         site.physical_sector_count,
         sector.antennas.count,
         sector.blocking,
