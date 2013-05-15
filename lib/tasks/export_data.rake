@@ -183,5 +183,8 @@ CSV.open(file, "wb") do |csv|
   puts Time.now.strftime("%d/%m/%Y %H:%M:%S")
 end
 
+desc "Export database; regenerate complete and short databases"
+task :all => [:backup, :completeDB, :shortDB]
+
 end 
 end

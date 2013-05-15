@@ -41,6 +41,9 @@ gem 'awesome_print', :require => 'ap'
 # Use unicorn as the web server
 gem 'unicorn'
 
+# Use whenever as task scheduler
+gem 'whenever', :require => false
+
 # Deploy with Capistrano
 # gem 'capistrano'
 
