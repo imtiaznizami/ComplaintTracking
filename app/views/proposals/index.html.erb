@@ -11,6 +11,7 @@
     <th>M. Tilt</th>
     <th>E. Tilt 900</th>
     <th>E. Tilt 1800</th>
+    <th>E. Tilt 2100</th>
     <th></th>
     <th></th>
     <th></th>
@@ -28,6 +29,7 @@
     <td><%= "#{proposal.antenna.mechanical_tilt.to_s || ""} > #{proposal.mechanical_tilt.to_s}" unless proposal.mechanical_tilt.nil? %></td>
     <td><%= "#{proposal.antenna.electrical_tilt_900.to_s || ""} > #{proposal.electrical_tilt_900.to_s}" unless proposal.electrical_tilt_900.nil? %></td>
     <td><%= "#{proposal.antenna.electrical_tilt_1800.to_s || ""} > #{proposal.electrical_tilt_1800.to_s}" unless proposal.electrical_tilt_1800.nil? %></td>
+    <td><%= "#{proposal.antenna.electrical_tilt_2100.to_s || ""} > #{proposal.electrical_tilt_2100.to_s}" unless proposal.electrical_tilt_2100.nil? %></td>
 
     <td><%= link_to 'Commit', commit_proposal_path(proposal) %></td>
     <td><%= link_to 'Edit', edit_proposal_path(proposal) %></td>

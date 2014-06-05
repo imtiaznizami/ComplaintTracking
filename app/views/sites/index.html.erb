@@ -24,9 +24,9 @@
   <tr>
     <td><%= link_to site.code, site %></td>
     <td><%= site.equipment_vendor %></td>
-    <td><%= site.address.city %></td>
-    <td><%= site.partner.status %></td>
-    <td><%= site.partner.operator %></td>
+    <td><%= site.address.city unless site.address.nil? %></td>
+    <td><%= site.partner.status unless site.partner.nil? %></td>
+    <td><%= site.partner.operator unless site.partner.nil? %></td>
     <td><%= link_to 'Edit', edit_site_path(site) if can? :update, Site %></td>
     <td><%= link_to 'Destroy', site, confirm: 'All related sectors will be deleted as well. Are you sure?', method: :delete if can? :destroy, Site %></td>
   </tr>

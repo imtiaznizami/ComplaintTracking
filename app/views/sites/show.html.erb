@@ -51,7 +51,7 @@
     <hr />
     <h4> Sectors </h4>
     <ul>
-      <% @site.sectors.each do |sector| %>
+      <% @site.sectors.sort_by{|s| s.code}.each do |sector| %>
         <li> <%= link_to sector.code, sector_path(sector) %> </li>
       <% end %>
     </ul>

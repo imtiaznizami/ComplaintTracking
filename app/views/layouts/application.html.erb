@@ -51,16 +51,18 @@
               <% end %>
 
               <!-- Dropdown export -->
-              <ul class="nav" role="navigation">
-                <li class="dropdown">
-                <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> Export <b class="caret"></b></a>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
-                  <!-- TODO: What if the file is not there? It should be generated first. -->
-                  <li><a tabindex="-1" href="exports/shortDB.csv"> Short DB </a></li>
-                  <li><a tabindex="-1" href="exports/completeDB.csv"> Complete DB </a></li>
+              <% unless (current_user.nil? || current_user.email =~ /zte/) %>
+                <ul class="nav" role="navigation">
+                  <li class="dropdown">
+                  <a id="drop1" href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> Export <b class="caret"></b></a>
+                  <ul class="dropdown-menu" role="menu" aria-labelledby="drop1">
+                    <!-- TODO: What if the file is not there? It should be generated first. -->
+                    <li><a tabindex="-1" href="exports/shortDB.csv"> Short DB </a></li>
+                    <li><a tabindex="-1" href="exports/completeDB.csv"> Complete DB </a></li>
+                  </ul>
+                  </li>
                 </ul>
-                </li>
-              </ul>
+              <% end %>
 
               <li><%= link_to "Surveys", surveys_path %></li>
 

@@ -6,7 +6,7 @@ namespace :export do
 
 desc "Export site database"
 task :backup do
-file_path = "/vagrant/"
+file_path = "/media/sf_vbox02/"
 file_name = "ap_#{Time.now.strftime("%Y%m%d")}.dump"
 file = "#{file_path}#{file_name}"
 
@@ -92,6 +92,7 @@ CSV.open(file, "wb") do |csv|
   csv << %w(
           code:site
           code:sector
+          site_name
           cell
           latitude
           longitude
@@ -110,6 +111,13 @@ CSV.open(file, "wb") do |csv|
           mechanical:1800:tilt:antenna
           electrical:1800:tilt:antenna
           effective:1800:tilt:antenna
+          code:2100:antenna
+          band:2100:antenna
+          hba:2100:antenna
+          azimuth:2100:antenna
+          mechanical:2100:tilt:antenna
+          electrical:2100:tilt:antenna
+          effective:2100:tilt:antenna
           sector_count:site
           antenna_count:sector
           blocking:sector
@@ -136,6 +144,7 @@ CSV.open(file, "wb") do |csv|
       csv << [
         site.code,
         sector.code,
+        site.name,
         sector.cell,
         site.address.latitude,
         site.address.longitude,
@@ -154,6 +163,13 @@ CSV.open(file, "wb") do |csv|
         sector.antenna_1800.mechanical_tilt,
         sector.antenna_1800.electrical_tilt_1800,
         sector.antenna_1800.effective_tilt_1800,
+        sector.antenna_2100.code,
+        sector.antenna_2100.band,
+        sector.antenna_2100.hba,
+        sector.antenna_2100.azimuth,
+        sector.antenna_2100.mechanical_tilt,
+        sector.antenna_2100.electrical_tilt_2100,
+        sector.antenna_2100.effective_tilt_2100,
         site.physical_sector_count,
         sector.antennas.count,
         sector.blocking,
